@@ -112,6 +112,17 @@ export default function CreateNote() {
 }
 
 function SearchBar() {
+  useEffect(() => {
+    axios
+        .get('globalNotes.html')
+        .then((response)=> {
+          setPosts(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }, []);
+
   return (
     <TextField
       variant="standard"
@@ -122,6 +133,17 @@ function SearchBar() {
 }
 
 export function NotesButton({redirectToNotes}) {
+  useEffect(() => {
+    axios
+        .get('userNotes.html')
+        .then((response)=> {
+          setPosts(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }, []);
+
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
       <Button variant="contained" onClick={redirectToNotes}>
@@ -132,6 +154,17 @@ export function NotesButton({redirectToNotes}) {
 }
 
 export function CoursesButton({redirectToCourses}) {
+  useEffect(() => {
+    axios
+        .get('userCourses.html')
+        .then((response)=> {
+          setPosts(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }, []);
+
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
       <Button variant="contained" onClick={redirectToCourses}>
@@ -142,6 +175,17 @@ export function CoursesButton({redirectToCourses}) {
 }
 
 export function CreateButton({redirectToCreateNote}) {
+  useEffect(() => {
+    axios
+        .get('latestInput.html')
+        .then((response)=> {
+          setPosts(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }, []);
+
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{mt: 8}} >
       <Button variant="outlined" onClick={redirectToCreateNote}>
