@@ -7,6 +7,17 @@ import { useNavigate } from 'react-router-dom';
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
+useEffect(() => {
+        // POST-Befehl an Backend-Server senden
+        fetch('/note/create')
+            .post(response => response.json())
+            .then(data => {
+                // Verarbeitung empfangener Daten
+                setData(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }, []);
+
 export default function CreateNote() {
   const navigate = useNavigate();
   const [showChat, setShowChat] = useState(false);
@@ -148,5 +159,16 @@ export function CreateButton({redirectToCreateNote}) {
         Create Note
       </Button>
     </Stack>
-  )
+  );
+
+  useEffect(() => {
+        // POST-Befehl an Backend-Server senden
+        fetch('/note/users:user_id/notes:note_id/save')
+            .post(response => response.json())
+            .then(data => {
+                // Verarbeitung empfangener Daten
+                setData(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }, [])
 }
