@@ -11,6 +11,17 @@ const sampleNotes = [
     { id: 3, title: "Note 3", content: "Content for Note 3" }, 
   ]
 
+useEffect(() => {
+        // GET-Befehl an Backend-Server senden
+        fetch('/note:note_id')
+            .get(response => response.json())
+            .then(data => {
+                // Verarbeitung empfangener Daten
+                setData(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }, []);
+
 export default function MyArchive() {
   const navigate = useNavigate();
   
