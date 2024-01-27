@@ -5,6 +5,17 @@ import { useNavigate } from 'react-router-dom';
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
+useEffect(() => {
+        // GET-Befehl an Backend-Server senden
+        fetch('/note/users:user_id/favorite')
+            .get(response => response.json())
+            .then(data => {
+                // Verarbeitung empfangener Daten
+                setData(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }, []);
+
 export default function MyFavorites({ favoriteNotes }) {
   const navigate = useNavigate();
   
