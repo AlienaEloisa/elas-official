@@ -5,6 +5,17 @@ import { useNavigate } from 'react-router-dom';
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
+useEffect(() => {
+        // GET-Befehl an Backend-Server senden
+        fetch('/note/users:user_id/courses:course_id/notes')
+            .get(response => response.json())
+            .then(data => {
+                // Verarbeitung empfangener Daten
+                setData(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }, []);
+
 const sampleCourses = [
   { id: 1, title: "Course 1", content: "Content for Course 1" },
   { id: 2, title: "Course 2", content: "Content for Course 2" },
