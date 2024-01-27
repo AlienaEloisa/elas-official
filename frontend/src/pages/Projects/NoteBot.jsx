@@ -7,6 +7,17 @@ import { Backend } from "../../../utils/apiConfig.js";
 
 import noteBotLogo from "../../../assets/images/noteBot-logo.png";
 
+useEffect(() => {
+        // GET-Befehl an Backend-Server senden
+        fetch('/note/users:user_id/savednotes')
+            .get(response => response.json())
+            .then(data => {
+                // Verarbeitung empfangener Daten
+                setData(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }, []);
+
 export default function NoteBot() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
