@@ -59,7 +59,7 @@ export default function TextEditor() {
 
     const handleSaveNote = async () => {
         try {
-            const response = await axios.post('/api/save-note', {
+            const response = await axios.post('/note/users:user_id/notes:note_id/save', {
                 title: title,
                 content: content
             });
