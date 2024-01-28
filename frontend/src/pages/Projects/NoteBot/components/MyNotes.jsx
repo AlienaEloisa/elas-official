@@ -11,9 +11,11 @@ import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 export default function MyNotes() {
   const navigate = useNavigate();
   
+  /*
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
   };
+  */
   
   const redirectToCreateNote = () => {
     navigate("/projects/notebot/createnote")
@@ -143,7 +145,7 @@ export default function MyNotes() {
             <Grid item justifyContent="flex-start">
               <Stack direction="row" justifyContent="flex-start" spacing={2}>
               <NotesButton redirectToNotes={redirectToNotes} />
-              <CoursesButton redirectToCourses={redirectToCourses} /> 
+              {/*<CoursesButton redirectToCourses={redirectToCourses} /> */}
                <Button variant="contained"
                endIcon={<KeyboardArrowDownIcon />}
                onClick={handleMenuClick}>
@@ -242,6 +244,7 @@ export function NotesButton({redirectToNotes}) {
   );
 }
 
+/*
 export function CoursesButton({redirectToCourses}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -251,6 +254,7 @@ export function CoursesButton({redirectToCourses}) {
     </Stack>
   );
 }
+*/
 
 export function CreateButton({redirectToCreateNote}) {
   return (

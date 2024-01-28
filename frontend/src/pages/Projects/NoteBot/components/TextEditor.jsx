@@ -23,13 +23,13 @@ export default function TextEditor() {
     const [fontSize, setFontSize] = useState(12);
     const [open, setOpen] = useState(false);
     const [openDialog, setOpenDialog] = useState(false);
-    const [openNewCourseDialog, setOpenNewCourseDialog] = useState(false);
+    // const [openNewCourseDialog, setOpenNewCourseDialog] = useState(false);
     const [courseTitle, setCourseTitle] = useState('');
-    const [courses, setCourses] = useState([]);
+    // const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [openDeleteConfirmationDialog, setOpenDeleteConfirmationDialog] = useState(false);
     const [showChat, setShowChat] = useState(false);
-
+/*
     useEffect(() => {
         // Fetch courses from backend when component mounts
         fetchCourses();
@@ -47,6 +47,7 @@ export default function TextEditor() {
             setLoading(false);
         }
     };
+*/
 
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -56,14 +57,31 @@ export default function TextEditor() {
         setAnchorEl(null);
     };
 
-    const handleSaveNote = () => {
-        setOpen(true);
+    const handleSaveNote = async () => {
+        try {
+            const response = await axios.post('/api/save-note', {
+                title: title,
+                content: content
+            });
+            
+            if (response.status === 200) {
+                // Note saved successfully, handle success scenario if needed
+                console.log("Note saved successfully");
+            } else {
+                // Handle other status codes if needed
+                console.error("Failed to save note");
+            }
+        } catch (error) {
+            // Handle error scenario
+            console.error("Error saving note:", error);
+        }
     };
 
+/*
     const handleClose = () => {
         setOpen(false);
     };
-
+*/
     const handleDeleteConfirmation = () => {
       setOpenDeleteConfirmationDialog(true);
     };
@@ -78,7 +96,7 @@ export default function TextEditor() {
       setOpenDeleteConfirmationDialog(false);
     };
 
-
+/*
     const handleExistingCourse = () => {
         setOpenDialog(true);
     };
@@ -95,7 +113,7 @@ export default function TextEditor() {
     const handleCourseTitleChange = (e) => {
         setCourseTitle(e.target.value);
     };
-
+    
     const handleSaveCourse = async () => {
         try {
             // Replace 'your-backend-api-endpoint' with your actual backend API endpoint
@@ -120,11 +138,13 @@ export default function TextEditor() {
             setOpenNewCourseDialog(false); // Close the dialog after saving the course
         }
     };
+    
 
     const handleCancelCourse = () => {
         setCourseTitle('');
         setOpenNewCourseDialog(false);
     };
+    */
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -138,9 +158,11 @@ export default function TextEditor() {
         setShowChat(!showChat);
       };
 
-    const redirectToCourses = () => {
+    /*
+      const redirectToCourses = () => {
         navigate("/projects/notebot/mycourses");
     };
+    */
 
     const redirectToCreateNote = () => {
         navigate("/projects/notebot/createnote");
@@ -178,7 +200,7 @@ export default function TextEditor() {
                         <Grid item justifyContent="flex-start">
                             <Stack direction="row" justifyContent="flex-start" spacing={2}>
                                 <NotesButton redirectToNotes={redirectToNotes} />
-                                <CoursesButton redirectToCourses={redirectToCourses} />
+                                {/* <CoursesButton redirectToCourses={redirectToCourses} /> */}
                                 <Button variant="contained"
                                     endIcon={<KeyboardArrowDownIcon />}
                                     onClick={handleMenuClick}>
@@ -225,7 +247,8 @@ export default function TextEditor() {
                                 </Button>
                               </DialogActions>
                             </Dialog>
-                            {/*Dialog for Adding note to new or existing course*/}
+
+                            {/*Dialog for Adding note to new or existing course
                             <Dialog open={open} onClose={handleClose}>
                                 <DialogTitle>Add Note to Course</DialogTitle>
                                 <DialogContent>
@@ -236,7 +259,7 @@ export default function TextEditor() {
                                     <Button onClick={handleClose}>Cancel</Button>
                                 </DialogActions>
                             </Dialog>
-                            {/*Dialog for chosing course from library*/}
+                            /*Dialog for chosing course from library
                             <Dialog open={openDialog} onClose={handleCloseDialog}>
                                 <DialogTitle>Select Course</DialogTitle>
                                 <DialogContent>
@@ -263,7 +286,7 @@ export default function TextEditor() {
                                     </Button>
                                 </DialogActions>
                             </Dialog>
-                            {/*Dialog for creating a new course*/}
+                            /*Dialog for creating a new course
                             <Dialog open={openNewCourseDialog} onClose={handleCloseDialog}>
                                 <DialogTitle>Create New Course</DialogTitle>
                                 <DialogContent>
@@ -279,7 +302,8 @@ export default function TextEditor() {
                                         Save Course
                                     </Button>
                                 </DialogActions>
-                            </Dialog>
+                            </Dialog> */}
+
                         </Stack>
                     </Grid>
                     {/*Toolbar for text editing and text*/}
@@ -383,6 +407,7 @@ export function NotesButton({ redirectToNotes }) {
     );
 }
 
+/*
 export function CoursesButton({ redirectToCourses }) {
     return (
         <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -392,6 +417,7 @@ export function CoursesButton({ redirectToCourses }) {
         </Stack>
     );
 }
+*/
 
 export function CreateButton({ redirectToCreateNote }) {
     return (

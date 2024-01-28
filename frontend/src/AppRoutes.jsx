@@ -60,7 +60,7 @@ import CourseRecommender from "./pages/Projects/CourseRecommender/CourseRecommen
 import Intogen from "./pages/Projects/Intogen/Intogen";
 import NoteBot from "./pages/Projects/NoteBot/NoteBot";
 import MyNotes from "./pages/Projects/NoteBot/components/MyNotes";
-import MyCourses from "./pages/Projects/NoteBot/components/MyCourses";
+/* import MyCourses from "./pages/Projects/NoteBot/components/MyCourses"; */
 import CreateNote from "./pages/Projects/NoteBot/components/CreateNote";
 import MyFavorites from "./pages/Projects/NoteBot/components/MyFavorites";
 import Deleted from "./pages/Projects/NoteBot/components/Deleted";
@@ -111,7 +111,7 @@ export default function AppRoutes() {
         <Route path="notebot">
           <Route index element={<NoteBot />} />
           <Route path="mynotes" element={<MyNotes />} />
-          <Route path="mycourses" element={<MyCourses />} />
+          {/* <Route path="mycourses" element={<MyCourses />} /> */}
           <Route path="createnote" element={<CreateNote />} />
           <Route path="myfavorites" element={<MyFavorites />} />
           <Route path="deleted" element={<Deleted />} />
