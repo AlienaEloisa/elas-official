@@ -58,7 +58,7 @@ let apiURL = "/api/notebot";
  */
 
 const userRoutes = require("./routes/user.routes");
-const noteRoutes = require("./routes/noteRoutes");
+const noteRoutes = require("./routes/note.Routes");
 const widgetsRoutes = require("./routes/widgets");
 const sectionsRoutes = require("./routes/sections");
 const coursesRoutes = require("./routes/courses");
