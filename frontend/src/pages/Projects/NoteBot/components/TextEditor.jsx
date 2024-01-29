@@ -13,12 +13,15 @@ import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 import Chatbot from "../assets/Chatbot.png"
 import { useNavigate } from 'react-router-dom';
 import { Backend } from '../../../../utils/apiConfig';
+import { getUserInfo } from '../../../../utils/apiConfig';
 // import axios from 'axios';
 
 export default function TextEditor() {
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [userId, setUserId] = useState(''); // State to hold user ID
+    const [noteId, setNoteId] = useState('');
     const [anchorEl, setAnchorEl] = useState(null);
     const [fontFamily, setFontFamily] = useState('Arial');
     const [fontSize, setFontSize] = useState(12);
@@ -30,7 +33,20 @@ export default function TextEditor() {
     const [loading, setLoading] = useState(false);
     const [openDeleteConfirmationDialog, setOpenDeleteConfirmationDialog] = useState(false);
     const [showChat, setShowChat] = useState(false);
-/*
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const { user } = await getUserInfo(userId);
+                setUserId(user.id); // Assuming user ID is available in user object
+            } catch (error) {
+                console.error("Error fetching user info:", error);
+            }
+        }
+        fetchData();
+    }, [userId]);
+
+    /*
     useEffect(() => {
         // Fetch courses from backend when component mounts
         fetchCourses();
@@ -58,22 +74,19 @@ export default function TextEditor() {
         setAnchorEl(null);
     };
 
-    const handleSaveNote = async (userId, noteId, title, content) => {
+    const handleSaveNote = async () => {
         try {
-            const response = await Backend.post(`/notebot/users/${userId}/notes/${noteId}`, {
+            const response = await Backend.post(`/notebot/users/${userId}/notes`, {
                 title: title,
                 content: content
             });
-            
+
             if (response.status === 200) {
-                // Note saved successfully, handle success scenario if needed
                 console.log("Note saved successfully");
             } else {
-                // Handle other status codes if needed
                 console.error("Failed to save note");
             }
         } catch (error) {
-            // Handle error scenario
             console.error("Error saving note:", error);
         }
     };
@@ -229,7 +242,7 @@ export default function TextEditor() {
                             </Typography>
                             <Grid item>
                             <Button variant="contained" sx={{marginRight: 2}} onClick={handleSaveNote}>
-                                Save Note
+                            Save Note
                             </Button>
                             <IconButton onClick={handleDeleteConfirmation}>
                               <DeleteIcon />

@@ -7,13 +7,13 @@ export const getUserInfo = async (userId) => {
       data: { message, user },
     } = response;
 
-    const handleSaveNote = async (userId, noteId, title, content) => {
+    const handleSaveNote = async (userId, title, content) => {
       try {
-          const response = await Backend.post(`/notebot/users/${userId}/notes/${noteId}`, {
+          const response = await Backend.post(`/notebot/users/${userId}/notes`, {
               title: title,
               content: content
           });
-          
+
           if (response.status === 200) {
               // Note saved successfully, handle success scenario if needed
               console.log("Note saved successfully");
@@ -40,4 +40,3 @@ export const getUserInfo = async (userId) => {
     };
   }
 };
-
