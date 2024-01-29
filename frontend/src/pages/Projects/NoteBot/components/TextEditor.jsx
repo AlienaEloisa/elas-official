@@ -12,7 +12,8 @@ import Chat from "./Chat";
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 import Chatbot from "../assets/Chatbot.png"
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { Backend } from '../../../../utils/apiConfig';
+// import axios from 'axios';
 
 export default function TextEditor() {
     const navigate = useNavigate();
@@ -57,9 +58,9 @@ export default function TextEditor() {
         setAnchorEl(null);
     };
 
-    const handleSaveNote = async () => {
+    const handleSaveNote = async (userId, noteId, title, content) => {
         try {
-            const response = await axios.post("/note/users:user_id/notes:note_id/save", {
+            const response = await Backend.post(`/notebot/users/${userId}/notes/${noteId}`, {
                 title: title,
                 content: content
             });
