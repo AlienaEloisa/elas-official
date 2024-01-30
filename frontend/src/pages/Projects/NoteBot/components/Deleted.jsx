@@ -44,6 +44,19 @@ export default function MyArchive() {
     setDeletedNotes(deletedNotes);
   }, []);
 
+  const restoreNote = (noteId) => {
+    const restoredNote = deletedNotes.find(note => note.id === noteId);
+    if (restoredNote) {
+      const updatedDeletedNotes = deletedNotes.filter(note => note.id !== noteId);
+      setDeletedNotes(updatedDeletedNotes);
+      sessionStorage.setItem("notebot-deleted-notes", JSON.stringify(updatedDeletedNotes));
+  
+      const updatedSampleNotes = [...sampleNotes, { ...restoredNote, deleted: false }];
+      setSampleNotes(updatedSampleNotes);
+      sessionStorage.setItem("notebot-notes", JSON.stringify(updatedSampleNotes));
+    }
+  };
+
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
       <Grid container sx={{ maxWidth: 1500, width: "100%" }} spacing={2}>
@@ -98,7 +111,7 @@ export default function MyArchive() {
             <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
               <Typography variant="h6">{note.title}</Typography>
               <Typography>{note.content}</Typography>
-              <Button sx={{marginTop: 2, marginLeft: -0.5}} variant="contained">
+              <Button sx={{marginTop: 2, marginLeft: -0.5}} variant="contained" onClick={() => restoreNote(note.id)}>
                 Restore Note
               </Button>
               </Paper>
