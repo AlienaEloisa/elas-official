@@ -7,7 +7,7 @@ import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
 export default function MyArchive() {
   const navigate = useNavigate();
-  const [recentlyDeletedNotes, setRecentlyDeletedNotes] = useState([]);
+  const [deletedNotes, setDeletedNotes] = useState([]);
   
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
@@ -40,11 +40,8 @@ export default function MyArchive() {
   };
 
   useEffect(() => {
-    // Fetch recently deleted notes from the backend
-    fetch("/recently-deleted-notes")
-      .then(response => response.json())
-      .then(data => setRecentlyDeletedNotes(data))
-      .catch(error => console.error('Error fetching recently deleted notes:', error));
+    let deletedNotes = JSON.parse(sessionStorage.getItem("notebot-deleted-notes"));
+    setDeletedNotes(deletedNotes);
   }, []);
 
   return (
@@ -96,14 +93,17 @@ export default function MyArchive() {
           </Grid>
           {/* Display recently deleted notes */}
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
-            {recentlyDeletedNotes.map((note) => (
-              <Grid item key={note.id} xs={12} sm={6} md={4}>
-                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5" }}>
-                  <Typography variant="h6">{note.title}</Typography>
-                  <Typography>{note.content}</Typography>
-                </Paper>
-              </Grid>
-            ))}
+          {deletedNotes?.map((note) => (
+          <Grid item key={note.id} xs={12} sm={6} md={4}>
+            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+              <Typography variant="h6">{note.title}</Typography>
+              <Typography>{note.content}</Typography>
+              <Button sx={{marginTop: 2, marginLeft: -0.5}} variant="contained">
+                Restore Note
+              </Button>
+              </Paper>
+            </Grid>
+          ))}
           </Grid>
         </Grid>
       </Grid>

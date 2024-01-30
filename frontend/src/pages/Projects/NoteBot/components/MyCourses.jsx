@@ -10,6 +10,14 @@ export default function MyCourses() {
   const [openDialog, setOpenDialog] = useState(false);
   const [courseTitle, setCourseTitle] = useState('');
 
+  const [sampleCourses, setSampleCourses] = useState([
+    { id: 1, course: "course 1" },
+    { id: 2, course: "course 2" },
+    { id: 3, course: "course 3" },
+    { id: 4, course: "course 4" },
+    { id: 5, course: "course 5" },
+  ]);
+
   const handleCreateCourse = () => {
     setOpenDialog(true);
   };
@@ -19,16 +27,18 @@ export default function MyCourses() {
   };
 
   const handleSaveCourse = () => {
-    axios.post('/api/courses', { title: courseTitle })
-        .then(response => {
-            console.log('Course saved successfully:', response.data);
-            handleCloseDialog();
-            setCourseTitle('');
-        })
-        .catch(error => {
-            console.error('Error saving course:', error);
-        });
-};
+    // Create a new course object with a unique id and the entered course title
+    const newCourse = {
+      id: sampleCourses.length + 1, // Generate a unique id based on the current length of sampleCourses
+      course: courseTitle
+    };
+
+    setSampleCourses(prevCourses => [...prevCourses, newCourse]);
+
+  // Close the dialog and reset the courseTitle state
+    handleCloseDialog();
+    setCourseTitle('');
+  };
   
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
@@ -111,6 +121,16 @@ export default function MyCourses() {
                 Create New Course
               </Button>
             </Stack>
+          </Grid>
+          <Grid container spacing={2} sx={{ marginTop: 4 }}>
+              {sampleCourses
+              .map((course) => (
+              <Grid item key={course.id} xs={12} sm={6} md={4}>
+                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+                  <Typography variant="h6">{course.course}</Typography>
+                </Paper>
+              </Grid>
+              ))}
           </Grid>
         </Grid>
       </Grid>

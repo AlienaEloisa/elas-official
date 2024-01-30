@@ -23,13 +23,23 @@ export default function TextEditor() {
     const [open, setOpen] = useState(false);
     const [openDialog, setOpenDialog] = useState(false);
     const [openNewCourseDialog, setOpenNewCourseDialog] = useState(false);
-    const [courseTitle, setCourseTitle] = useState('');
+    const [selectedCourseTitle, setSelectedCourseTitle] = useState('Select Course');
+    const [newCourseTitle, setNewCourseTitle] = useState('');
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [openDeleteConfirmationDialog, setOpenDeleteConfirmationDialog] = useState(false);
     const [showChat, setShowChat] = useState(false);
 
-    useEffect(() => {
+    const [sampleCourses, setSampleCourses] = useState([
+        { id: 1, course: "course 1" },
+        { id: 2, course: "course 2" },
+        { id: 3, course: "course 3" },
+        { id: 4, course: "course 4" },
+        { id: 5, course: "course 5" },
+      ]);
+
+    /*
+      useEffect(() => {
         // Fetch courses from backend when component mounts
         fetchCourses();
     }, []);
@@ -46,6 +56,7 @@ export default function TextEditor() {
             setLoading(false);
         }
     };
+    */
 
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -91,28 +102,32 @@ export default function TextEditor() {
         setOpenNewCourseDialog(false);
     };
 
-    const handleCourseTitleChange = (e) => {
-        setCourseTitle(e.target.value);
-    };
+
 
     const handleSaveCourse = async () => {
         try {
-            // Replace 'your-backend-api-endpoint' with your actual backend API endpoint
-            const response = await axios.post('your-backend-api-endpoint', { title: courseTitle });
-            // Assuming the response contains the newly created course details
-            const newCourse = response.data;
+            // Simulate creating a new course (replace with your actual logic)
+            const newCourse = { id: courses.length + 1, course: newCourseTitle };
             setCourses([...courses, newCourse]); // Update the list of courses with the newly created course
-            setCourseTitle(''); // Clear the course title field
+            setNewCourseTitle(''); // Clear the course title field
         } catch (error) {
             console.error('Error creating course:', error);
         } finally {
             setOpenNewCourseDialog(false);
         }
+    };  
+    
+    const handleCancelCourse = () => {
+        setNewCourseTitle('');
+        setOpenNewCourseDialog(false);
     };
 
-    const handleCancelCourse = () => {
-        setCourseTitle('');
-        setOpenNewCourseDialog(false);
+    const handleSelectedCourseTitleChange = (e) => {
+        setSelectedCourseTitle(e.target.value);
+    };
+
+    const handleNewCourseTitleChange = (e) => {
+        setNewCourseTitle(e.target.value);
     };
 
     const handleTitleChange = (e) => {
@@ -227,18 +242,21 @@ export default function TextEditor() {
                             </Dialog>
                             {/*Dialog for chosing course from library*/}
                             <Dialog open={openDialog} onClose={handleCloseDialog}>
-                                <DialogTitle>Select Course</DialogTitle>
+                                <DialogTitle>Add to Course</DialogTitle>
                                 <DialogContent>
                                     {loading ? (
                                         <CircularProgress />
                                     ) : (
                                         <FormControl fullWidth>
-                                            <Select
-                                                value={courseTitle}
-                                                onChange={handleCourseTitleChange}>
-                                                {courses.map((course) => (
-                                                    <MenuItem key={course.id} value={course.title}>
-                                                        {course.title}
+                                             <Select
+                                                value={selectedCourseTitle}
+                                                onChange={handleSelectedCourseTitleChange}>
+                                                <MenuItem value="Select Course" disabled>
+                                                    Select Course
+                                                </MenuItem>
+                                                {sampleCourses.map((course) => (
+                                                    <MenuItem key={course.id} value={course.course}>
+                                                        {course.course}
                                                     </MenuItem>
                                                 ))}
                                             </Select>
@@ -259,8 +277,8 @@ export default function TextEditor() {
                                     <TextField
                                         fullWidth
                                         label="Course Title"
-                                        value={courseTitle}
-                                        onChange={handleCourseTitleChange} />
+                                        value={newCourseTitle}
+                                        onChange={handleNewCourseTitleChange} />
                                 </DialogContent>
                                 <DialogActions>
                                     <Button onClick={handleCancelCourse}>Cancel</Button>

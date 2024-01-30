@@ -4,7 +4,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
-import axios from "axios";
+// import axios from "axios";
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
@@ -35,6 +35,7 @@ export default function MyNotes() {
   const [favoriteNotes, setFavoriteNotes] = useState([]);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [noteToDelete, setNoteToDelete] = useState(null);
+  const [deletedNotes, setDeletedNotes] = useState([]);
   const [snackbarFavoritesOpen, setSnackbarFavoritesOpen] = useState(false);
   const [snackbarDeleteOpen, setSnackbarDeleteOpen] = useState(false);
 
@@ -46,7 +47,70 @@ export default function MyNotes() {
     setAnchorEl(null);
   };
 
-  const addToFavorites = (note) => {
+  const [sampleNotes, setSampleNotes] = useState([
+    { id: 1, title: "Note 1", content: "Content for Note 1", course: "course 1", favorite: false, deleted: false },
+    { id: 2, title: "Note 2", content: "Content for Note 2", course: "course 1", favorite: false, deleted: false },
+    { id: 3, title: "Note 3", content: "Content for Note 3", course: "course 1", favorite: false, deleted: false },
+    { id: 4, title: "Note 4", content: "Content for Note 4", course: "course 2", favorite: false, deleted: false },
+    { id: 5, title: "Note 5", content: "Content for Note 5", course: "course 2", favorite: false, deleted: false },
+    { id: 6, title: "Note 6", content: "Content for Note 6", course: "course 2", favorite: false, deleted: false },
+    { id: 7, title: "Note 7", content: "Content for Note 7", course: "course 3", favorite: false, deleted: false },
+    { id: 8, title: "Note 8", content: "Content for Note 8", course: "course 3", favorite: false, deleted: false },
+    { id: 9, title: "Note 9", content: "Content for Note 9", course: "course 3", favorite: false, deleted: false },
+    { id: 10, title: "Note 10", content: "Content for Note 10", course: "course 4", favorite: false, deleted: false },
+  ]);
+
+  useEffect(() => {
+    // Retrieve favoriteNotes from session storage
+    const storedFavNotes = JSON.parse(sessionStorage.getItem("notebot-favnotes"));
+  
+    // If storedFavNotes is null, use an empty array as the default
+    setFavoriteNotes(storedFavNotes || []);
+  }, []);
+
+  useEffect(() => {
+    // Retrieve deleted notes from session storage
+    const storedDeletedNotes = JSON.parse(sessionStorage.getItem("notebot-deleted-notes"));
+    // If storedDeletedNotes is null, use an empty array as the default
+    setDeletedNotes(storedDeletedNotes || []);
+  }, []);
+
+
+  const openDeleteDialog = (note) => {
+    setNoteToDelete(note);
+    setDeleteDialogOpen(true);
+  };
+
+  const closeDeleteDialog = () => {
+    setNoteToDelete(null);
+    setDeleteDialogOpen(false);
+  };
+
+  const confirmDelete = () => {
+    if (noteToDelete.deleted) {
+      // If the note is already deleted, show a message or handle accordingly
+      console.log("Note has already been deleted.");
+      return;
+    }
+  
+    const updatedNotes = sampleNotes.map((note) => {
+      if (note.id === noteToDelete.id) {
+        return { ...note, deleted: true };
+      }
+      return note;
+    });
+  
+    const updatedDeletedNotes = [...deletedNotes, { ...noteToDelete, deleted: true }]; // Update note status to deleted
+  setDeletedNotes(updatedDeletedNotes); // Update deletedNotes state
+  sessionStorage.setItem("notebot-deleted-notes", JSON.stringify(updatedDeletedNotes));
+
+  setSampleNotes(updatedNotes);
+  closeDeleteDialog();
+  sessionStorage.setItem("notebot-notes", JSON.stringify(updatedNotes));
+  setSnackbarDeleteOpen(true);
+};
+
+    const addToFavorites = (note) => {
     // Check if the note is already in favorites
     const isNoteInFavorites = favoriteNotes.some((favNote) => favNote.id === note.id);
   
@@ -67,41 +131,8 @@ export default function MyNotes() {
       });
     }
   };
-
-  const [sampleNotes, setSampleNotes] = useState([
-    { id: 1, title: "Note 1", content: "Content for Note 1", favorite: false, deleted: false },
-    { id: 2, title: "Note 2", content: "Content for Note 2", favorite: false, deleted: false },
-    { id: 3, title: "Note 3", content: "Content for Note 3", favorite: false, deleted: false },
-  ]);
-
-  useEffect(() => {
-    // Retrieve favoriteNotes from session storage
-    const storedFavNotes = JSON.parse(sessionStorage.getItem("notebot-favnotes"));
   
-    // If storedFavNotes is null, use an empty array as the default
-    setFavoriteNotes(storedFavNotes || []);
-  }, []);
-
-  const openDeleteDialog = (note) => {
-    setNoteToDelete(note);
-    setDeleteDialogOpen(true);
-  };
-
-  const closeDeleteDialog = () => {
-    setNoteToDelete(null);
-    setDeleteDialogOpen(false);
-  };
-
-  const confirmDelete = () => {
-    // Move the note to the recently deleted notes
-    const updatedNotes = sampleNotes.map((note) => {
-      if (note.id === noteToDelete.id) {
-        return { ...note, deleted: true };
-      }
-      return note;
-    });
-  
-    // Send a request to update the note's status in the backend
+    /* Send a request to update the note's status in the backend
     fetch(`/recently-deleted-notes${noteToDelete.id}`, {
       method: 'PUT',
       headers: {
@@ -128,7 +159,7 @@ export default function MyNotes() {
       // Handle fetch error
       console.error('Error:', error);
     });
-  };
+  }; */
 
   const closeSnackbarFavorites = () => {
     setSnackbarFavoritesOpen(false);
@@ -186,12 +217,14 @@ export default function MyNotes() {
               My Notes
             </Typography>
           </Grid>
-          <Grid container spacing={2} sx={{ marginTop: 4 }}>
-          {sampleNotes.map((note) => (
-            <Grid item key={note.id} xs={12} sm={6} md={4}>
-              <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-                <Typography variant="h6">{note.title}</Typography>
-                <Typography>{note.content}</Typography>
+          <Grid container spacing={2} sx={{ marginTop: 4, marginLeft: 0.5 }}>
+          {sampleNotes
+            .filter(note => !note.deleted) // Filter out notes with deleted set to true
+            .map((note) => (
+          <Grid item key={note.id} xs={12} sm={6} md={4}>
+            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+              <Typography variant="h6">{note.title}</Typography>
+              <Typography>{note.content}</Typography>
                 <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: favoriteNotes.some((favNote) => favNote.id === note.id) ? 'red' : 'gray' }}
                   onClick={() => addToFavorites(note)}>
                   <FavoriteIcon />
@@ -200,8 +233,8 @@ export default function MyNotes() {
                   onClick={() => openDeleteDialog(note)}>
                   <DeleteIcon />
                 </IconButton>
-              </Paper>
-            </Grid>
+            </Paper>
+          </Grid>
           ))}
           </Grid>
         {/* Delete Confirmation Dialog */}
