@@ -12,7 +12,6 @@ import Chat from "./Chat";
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import fs from 'fs';
 
 export default function TextEditor() {
     const navigate = useNavigate();
@@ -67,22 +66,7 @@ export default function TextEditor() {
         setAnchorEl(null);
     };
 
-    // only to use an already existing file
-    const fileName = 'MyNotes';
-    
     const handleSaveNote = () => {
-        // Create a file name based on the current date and time (you can customize this)
-        const fileName = `MyNotes`;
-
-        // Write the note content to a file
-        fs.writeFile(fileName, content, (err) => {
-            if (err) {
-                console.error('Error saving note:', err);
-            } else {
-                console.log('Note saved successfully!');
-            }
-        });
-
         setOpen(true);
     };
 
