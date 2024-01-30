@@ -31,6 +31,19 @@ export default function MyArchive() {
 
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const [sampleNotes, setSampleNotes] = useState([
+    { id: 1, title: "Note 1", content: "Content for Note 1", course: "course 1", favorite: false, deleted: false, restored: false },
+    { id: 2, title: "Note 2", content: "Content for Note 2", course: "course 1", favorite: false, deleted: false, restored: false },
+    { id: 3, title: "Note 3", content: "Content for Note 3", course: "course 1", favorite: false, deleted: false, restored: false },
+    { id: 4, title: "Note 4", content: "Content for Note 4", course: "course 2", favorite: false, deleted: false, restored: false },
+    { id: 5, title: "Note 5", content: "Content for Note 5", course: "course 2", favorite: false, deleted: false, restored: false },
+    { id: 6, title: "Note 6", content: "Content for Note 6", course: "course 2", favorite: false, deleted: false, restored: false },
+    { id: 7, title: "Note 7", content: "Content for Note 7", course: "course 3", favorite: false, deleted: false, restored: false },
+    { id: 8, title: "Note 8", content: "Content for Note 8", course: "course 3", favorite: false, deleted: false, restored: false },
+    { id: 9, title: "Note 9", content: "Content for Note 9", course: "course 3", favorite: false, deleted: false, restored: false },
+    { id: 10, title: "Note 10", content: "Content for Note 10", course: "course 4", favorite: false, deleted: false, restored: false },
+]);
+
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };

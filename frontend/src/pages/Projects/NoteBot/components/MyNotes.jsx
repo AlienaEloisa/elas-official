@@ -48,16 +48,16 @@ export default function MyNotes() {
   };
   
   const [sampleNotes, setSampleNotes] = useState([
-    { id: 1, title: "Note 1", content: "Content for Note 1", course: "course 1", favorite: false, deleted: false },
-    { id: 2, title: "Note 2", content: "Content for Note 2", course: "course 1", favorite: false, deleted: false },
-    { id: 3, title: "Note 3", content: "Content for Note 3", course: "course 1", favorite: false, deleted: false },
-    { id: 4, title: "Note 4", content: "Content for Note 4", course: "course 2", favorite: false, deleted: false },
-    { id: 5, title: "Note 5", content: "Content for Note 5", course: "course 2", favorite: false, deleted: false },
-    { id: 6, title: "Note 6", content: "Content for Note 6", course: "course 2", favorite: false, deleted: false },
-    { id: 7, title: "Note 7", content: "Content for Note 7", course: "course 3", favorite: false, deleted: false },
-    { id: 8, title: "Note 8", content: "Content for Note 8", course: "course 3", favorite: false, deleted: false },
-    { id: 9, title: "Note 9", content: "Content for Note 9", course: "course 3", favorite: false, deleted: false },
-    { id: 10, title: "Note 10", content: "Content for Note 10", course: "course 4", favorite: false, deleted: false },
+      { id: 1, title: "Note 1", content: "Content for Note 1", course: "course 1", favorite: false, deleted: false, restored: false },
+      { id: 2, title: "Note 2", content: "Content for Note 2", course: "course 1", favorite: false, deleted: false, restored: false },
+      { id: 3, title: "Note 3", content: "Content for Note 3", course: "course 1", favorite: false, deleted: false, restored: false },
+      { id: 4, title: "Note 4", content: "Content for Note 4", course: "course 2", favorite: false, deleted: false, restored: false },
+      { id: 5, title: "Note 5", content: "Content for Note 5", course: "course 2", favorite: false, deleted: false, restored: false },
+      { id: 6, title: "Note 6", content: "Content for Note 6", course: "course 2", favorite: false, deleted: false, restored: false },
+      { id: 7, title: "Note 7", content: "Content for Note 7", course: "course 3", favorite: false, deleted: false, restored: false },
+      { id: 8, title: "Note 8", content: "Content for Note 8", course: "course 3", favorite: false, deleted: false, restored: false },
+      { id: 9, title: "Note 9", content: "Content for Note 9", course: "course 3", favorite: false, deleted: false, restored: false },
+      { id: 10, title: "Note 10", content: "Content for Note 10", course: "course 4", favorite: false, deleted: false, restored: false },
   ]);
 
   useEffect(() => {
@@ -66,16 +66,16 @@ export default function MyNotes() {
   
     // If storedNotes is null, use the initial sampleNotes array
     setSampleNotes(storedNotes || [
-      { id: 1, title: "Note 1", content: "Content for Note 1", course: "course 1", favorite: false, deleted: false },
-      { id: 2, title: "Note 2", content: "Content for Note 2", course: "course 1", favorite: false, deleted: false },
-      { id: 3, title: "Note 3", content: "Content for Note 3", course: "course 1", favorite: false, deleted: false },
-      { id: 4, title: "Note 4", content: "Content for Note 4", course: "course 2", favorite: false, deleted: false },
-      { id: 5, title: "Note 5", content: "Content for Note 5", course: "course 2", favorite: false, deleted: false },
-      { id: 6, title: "Note 6", content: "Content for Note 6", course: "course 2", favorite: false, deleted: false },
-      { id: 7, title: "Note 7", content: "Content for Note 7", course: "course 3", favorite: false, deleted: false },
-      { id: 8, title: "Note 8", content: "Content for Note 8", course: "course 3", favorite: false, deleted: false },
-      { id: 9, title: "Note 9", content: "Content for Note 9", course: "course 3", favorite: false, deleted: false },
-      { id: 10, title: "Note 10", content: "Content for Note 10", course: "course 4", favorite: false, deleted: false },
+      { id: 1, title: "Note 1", content: "Content for Note 1", course: "course 1", favorite: false, deleted: false, restored: false },
+      { id: 2, title: "Note 2", content: "Content for Note 2", course: "course 1", favorite: false, deleted: false, restored: false },
+      { id: 3, title: "Note 3", content: "Content for Note 3", course: "course 1", favorite: false, deleted: false, restored: false },
+      { id: 4, title: "Note 4", content: "Content for Note 4", course: "course 2", favorite: false, deleted: false, restored: false },
+      { id: 5, title: "Note 5", content: "Content for Note 5", course: "course 2", favorite: false, deleted: false, restored: false },
+      { id: 6, title: "Note 6", content: "Content for Note 6", course: "course 2", favorite: false, deleted: false, restored: false },
+      { id: 7, title: "Note 7", content: "Content for Note 7", course: "course 3", favorite: false, deleted: false, restored: false },
+      { id: 8, title: "Note 8", content: "Content for Note 8", course: "course 3", favorite: false, deleted: false, restored: false },
+      { id: 9, title: "Note 9", content: "Content for Note 9", course: "course 3", favorite: false, deleted: false, restored: false },
+      { id: 10, title: "Note 10", content: "Content for Note 10", course: "course 4", favorite: false, deleted: false, restored: false },
     ]);
   }, []);
 
@@ -241,23 +241,23 @@ export default function MyNotes() {
           </Grid>
           <Grid container spacing={2} sx={{ marginTop: 4, marginLeft: 0.5 }}>
           {sampleNotes
-            .filter(note => !note.deleted) // Filter out notes with deleted set to true
-            .map((note) => (
-          <Grid item key={note.id} xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-              <Typography variant="h6">{note.title}</Typography>
-              <Typography>{note.content}</Typography>
-                <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: favoriteNotes.some((favNote) => favNote.id === note.id) ? 'red' : 'gray' }}
-                  onClick={() => addToFavorites(note)}>
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}
-                  onClick={() => openDeleteDialog(note)}>
-                  <DeleteIcon />
-                </IconButton>
-            </Paper>
-          </Grid>
-          ))}
+          .filter(note => !note.deleted)
+          .map((note) => (
+  <Grid item key={note.id} xs={12} sm={6} md={4}>
+    <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+      <Typography variant="h6">{note.title}</Typography>
+      <Typography>{note.content}</Typography>
+      <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: favoriteNotes.some((favNote) => favNote.id === note.id) ? 'red' : 'gray' }}
+        onClick={() => addToFavorites(note)}>
+        <FavoriteIcon />
+      </IconButton>
+      <IconButton sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}
+        onClick={() => openDeleteDialog(note)}>
+        <DeleteIcon />
+      </IconButton>
+    </Paper>
+  </Grid>
+))}
           </Grid>
         {/* Delete Confirmation Dialog */}
         <Dialog open={deleteDialogOpen} onClose={closeDeleteDialog}>
