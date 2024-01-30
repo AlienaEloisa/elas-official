@@ -11,7 +11,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 import Chat from "./Chat";
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function TextEditor() {
     const navigate = useNavigate();
@@ -101,8 +101,6 @@ export default function TextEditor() {
         setOpenDialog(false);
         setOpenNewCourseDialog(false);
     };
-
-
 
     const handleSaveCourse = async () => {
         try {

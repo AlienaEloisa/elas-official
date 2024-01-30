@@ -94,10 +94,6 @@ export default function MyNotes() {
     setDeletedNotes(storedDeletedNotes || []);
   }, []);
 
-
-
-  
-
   const openDeleteDialog = (note) => {
     setNoteToDelete(note);
     setDeleteDialogOpen(true);
@@ -243,21 +239,21 @@ export default function MyNotes() {
           {sampleNotes
           .filter(note => !note.deleted)
           .map((note) => (
-  <Grid item key={note.id} xs={12} sm={6} md={4}>
-    <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-      <Typography variant="h6">{note.title}</Typography>
-      <Typography>{note.content}</Typography>
-      <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: favoriteNotes.some((favNote) => favNote.id === note.id) ? 'red' : 'gray' }}
-        onClick={() => addToFavorites(note)}>
-        <FavoriteIcon />
-      </IconButton>
-      <IconButton sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}
-        onClick={() => openDeleteDialog(note)}>
-        <DeleteIcon />
-      </IconButton>
-    </Paper>
-  </Grid>
-))}
+            <Grid item key={note.id} xs={12} sm={6} md={4}>
+              <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+                <Typography variant="h6">{note.title}</Typography>
+                <Typography>{note.content}</Typography>
+                <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: favoriteNotes.some((favNote) => favNote.id === note.id) ? 'red' : 'gray' }}
+                  onClick={() => addToFavorites(note)}>
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}
+                  onClick={() => openDeleteDialog(note)}>
+                  <DeleteIcon />
+                </IconButton>
+              </Paper>
+            </Grid>
+          ))}
           </Grid>
         {/* Delete Confirmation Dialog */}
         <Dialog open={deleteDialogOpen} onClose={closeDeleteDialog}>
