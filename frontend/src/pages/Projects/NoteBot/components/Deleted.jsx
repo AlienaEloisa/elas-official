@@ -57,25 +57,6 @@ export default function MyArchive() {
     }
   };
 
-   // only to use an already existing file
-    const fileName = 'MyNotes';
-    
-    const handleSaveNote = () => {
-        // Create a file name based on the current date and time (you can customize this)
-        const fileName = `MyNotes`;
-
-        // Write the note content to a file
-        fs.writeFile(fileName, restoredNote, (err) => {
-            if (err) {
-                console.error('Error saving restored note:', err);
-            } else {
-                console.log('Restored note saved successfully!');
-            }
-        });
-
-        setOpen(true);
-    };
-
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
       <Grid container sx={{ maxWidth: 1500, width: "100%" }} spacing={2}>
