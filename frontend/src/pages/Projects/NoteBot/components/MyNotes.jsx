@@ -48,16 +48,16 @@ export default function MyNotes() {
   };
   
   const [sampleNotes, setSampleNotes] = useState([
-      { id: 1, title: "Note 1", content: "Content for Note 1", course: "course 1", favorite: false, deleted: false, restored: false },
-      { id: 2, title: "Note 2", content: "Content for Note 2", course: "course 1", favorite: false, deleted: false, restored: false },
-      { id: 3, title: "Note 3", content: "Content for Note 3", course: "course 1", favorite: false, deleted: false, restored: false },
-      { id: 4, title: "Note 4", content: "Content for Note 4", course: "course 2", favorite: false, deleted: false, restored: false },
-      { id: 5, title: "Note 5", content: "Content for Note 5", course: "course 2", favorite: false, deleted: false, restored: false },
-      { id: 6, title: "Note 6", content: "Content for Note 6", course: "course 2", favorite: false, deleted: false, restored: false },
-      { id: 7, title: "Note 7", content: "Content for Note 7", course: "course 3", favorite: false, deleted: false, restored: false },
-      { id: 8, title: "Note 8", content: "Content for Note 8", course: "course 3", favorite: false, deleted: false, restored: false },
-      { id: 9, title: "Note 9", content: "Content for Note 9", course: "course 3", favorite: false, deleted: false, restored: false },
-      { id: 10, title: "Note 10", content: "Content for Note 10", course: "course 4", favorite: false, deleted: false, restored: false },
+    { id: 1, title: "HCI 1", content: "Vorlesung 1: Die visuelle Wahrnehmung...", course: "course 1", favorite: false, deleted: false, restored: false },
+    { id: 2, title: "Math 1", content: "Vorlesung 1: Grundlegende Rechenstrukturen...", course: "course 1", favorite: false, deleted: false, restored: false },
+    { id: 3, title: "Math 2", content: "Vorlesung 2: Kurvendiskussion...", course: "course 1", favorite: false, deleted: false, restored: false },
+    { id: 4, title: "Programming 1", content: "Vorlesung 1: Hello World...", course: "course 2", favorite: false, deleted: false, restored: false },
+    { id: 5, title: "HCI summary", content: "Zusammenfassung HCI SS23", course: "course 2", favorite: false, deleted: false, restored: false },
+    { id: 6, title: "Math summary", content: "Zusammenfassung Mathe SS23", course: "course 2", favorite: false, deleted: false, restored: false },
+    { id: 7, title: "Marketing", content: "1. Grundlagen des Marketings...", course: "course 3", favorite: false, deleted: false, restored: false },
+    { id: 8, title: "Programming 2", content: "Vorlesung 2: if-Bedingungen...", course: "course 3", favorite: false, deleted: false, restored: false },
+    { id: 9, title: "Statistics", content: "Statistik 1 mit Jamovi...", course: "course 3", favorite: false, deleted: false, restored: false },
+    { id: 10, title: "Digital Media", content: "Vorlesung 1: Digitale Medien...", course: "course 4", favorite: false, deleted: false, restored: false },
   ]);
 
   useEffect(() => {
@@ -66,16 +66,16 @@ export default function MyNotes() {
   
     // If storedNotes is null, use the initial sampleNotes array
     setSampleNotes(storedNotes || [
-      { id: 1, title: "Note 1", content: "Content for Note 1", course: "course 1", favorite: false, deleted: false, restored: false },
-      { id: 2, title: "Note 2", content: "Content for Note 2", course: "course 1", favorite: false, deleted: false, restored: false },
-      { id: 3, title: "Note 3", content: "Content for Note 3", course: "course 1", favorite: false, deleted: false, restored: false },
-      { id: 4, title: "Note 4", content: "Content for Note 4", course: "course 2", favorite: false, deleted: false, restored: false },
-      { id: 5, title: "Note 5", content: "Content for Note 5", course: "course 2", favorite: false, deleted: false, restored: false },
-      { id: 6, title: "Note 6", content: "Content for Note 6", course: "course 2", favorite: false, deleted: false, restored: false },
-      { id: 7, title: "Note 7", content: "Content for Note 7", course: "course 3", favorite: false, deleted: false, restored: false },
-      { id: 8, title: "Note 8", content: "Content for Note 8", course: "course 3", favorite: false, deleted: false, restored: false },
-      { id: 9, title: "Note 9", content: "Content for Note 9", course: "course 3", favorite: false, deleted: false, restored: false },
-      { id: 10, title: "Note 10", content: "Content for Note 10", course: "course 4", favorite: false, deleted: false, restored: false },
+      { id: 1, title: "HCI 1", content: "Vorlesung 1: Die visuelle Wahrnehmung...", course: "course 1", favorite: false, deleted: false, restored: false },
+      { id: 2, title: "Math 1", content: "Vorlesung 1: Grundlegende Rechenstrukturen...", course: "course 1", favorite: false, deleted: false, restored: false },
+      { id: 3, title: "Math 2", content: "Vorlesung 2: Kurvendiskussion...", course: "course 1", favorite: false, deleted: false, restored: false },
+      { id: 4, title: "Programming 1", content: "Vorlesung 1: Hello World...", course: "course 2", favorite: false, deleted: false, restored: false },
+      { id: 5, title: "HCI summary", content: "Zusammenfassung HCI SS23", course: "course 2", favorite: false, deleted: false, restored: false },
+      { id: 6, title: "Math summary", content: "Zusammenfassung Mathe SS23", course: "course 2", favorite: false, deleted: false, restored: false },
+      { id: 7, title: "Marketing", content: "1. Grundlagen des Marketings...", course: "course 3", favorite: false, deleted: false, restored: false },
+      { id: 8, title: "Programming 2", content: "Vorlesung 2: if-Bedingungen...", course: "course 3", favorite: false, deleted: false, restored: false },
+      { id: 9, title: "Statistics", content: "Statistik 1 mit Jamovi...", course: "course 3", favorite: false, deleted: false, restored: false },
+      { id: 10, title: "Digital Media", content: "Vorlesung 1: Digitale Medien...", course: "course 4", favorite: false, deleted: false, restored: false },
     ]);
   }, []);
 

@@ -3,7 +3,7 @@ import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField, Dial
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
-import axios from "axios";
+// import axios from "axios";
 
 export default function MyCourses() {
   const navigate = useNavigate();
@@ -11,11 +11,12 @@ export default function MyCourses() {
   const [courseTitle, setCourseTitle] = useState('');
 
   const [sampleCourses, setSampleCourses] = useState([
-    { id: 1, course: "course 1" },
-    { id: 2, course: "course 2" },
-    { id: 3, course: "course 3" },
-    { id: 4, course: "course 4" },
-    { id: 5, course: "course 5" },
+    { id: 1, course: "HCI" },
+    { id: 2, course: "Math" },
+    { id: 3, course: "Marketing" },
+    { id: 4, course: "Programming" },
+    { id: 5, course: "Statistics" },
+    { id: 6, course: "Digital Media" },
   ]);
 
   const handleCreateCourse = () => {

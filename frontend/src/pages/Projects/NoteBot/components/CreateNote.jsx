@@ -151,8 +151,8 @@ export default function CreateNote() {
           <ChatIcon
             sx={{
               position: 'fixed',
-              bottom: '40px',
-              right: '40px',
+              bottom: '60px',
+              right: '60px',
               fontSize: '2rem',
               color: '#2196F3', // Customize the color as needed
               cursor: 'pointer',
