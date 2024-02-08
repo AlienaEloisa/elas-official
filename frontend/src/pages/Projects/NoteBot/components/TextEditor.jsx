@@ -31,11 +31,12 @@ export default function TextEditor() {
     const [showChat, setShowChat] = useState(false);
 
     const [sampleCourses, setSampleCourses] = useState([
-        { id: 1, course: "course 1" },
-        { id: 2, course: "course 2" },
-        { id: 3, course: "course 3" },
-        { id: 4, course: "course 4" },
-        { id: 5, course: "course 5" },
+        { id: 1, course: "HCI" },
+        { id: 2, course: "Marketing" },
+        { id: 3, course: "Math" },
+        { id: 4, course: "Media Science" },
+        { id: 5, course: "Programming" },
+        { id: 6, course: "Statistics" },
       ]);
 
     /*
