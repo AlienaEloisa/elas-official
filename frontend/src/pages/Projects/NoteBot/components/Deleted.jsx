@@ -42,7 +42,7 @@ export default function MyArchive() {
     { id: 8, title: "Programming 2", content: "Vorlesung 2: if-Bedingungen...", course: "course 3", favorite: false, deleted: false, restored: false },
     { id: 9, title: "Statistics", content: "Statistik 1 mit Jamovi...", course: "course 3", favorite: false, deleted: false, restored: false },
     { id: 10, title: "Digital Media", content: "Vorlesung 1: Digitale Medien...", course: "course 4", favorite: false, deleted: false, restored: false },
-]);
+  ]);
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -83,34 +83,32 @@ export default function MyArchive() {
               xs={12}
               sm={7}
               md={4}
-              sx={{ width: "100%", pb: 2 }}
-            />
+              sx={{ width: "100%", pb: 2 }} />
           </Grid>
-
           <Grid container justifyContent="space-between" spacing={2}>
-          <Grid item justifyContent="flex-start">
+            <Grid item justifyContent="flex-start">
               <Stack direction="row" justifyContent="flex-start" spacing={2}>
-              <NotesButton redirectToNotes={redirectToNotes} />
-              <CoursesButton redirectToCourses={redirectToCourses} /> 
-               <Button variant="outlined"
-               endIcon={<KeyboardArrowDownIcon />}
-               onClick={handleMenuClick}>
-                Archive
-                </Button>
-                <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}>
-                <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
-                <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
-              </Menu>
-              <CreateButton redirectToCreateNote={redirectToCreateNote} />
+                <NotesButton redirectToNotes={redirectToNotes} />
+                <CoursesButton redirectToCourses={redirectToCourses} /> 
+                  <Button variant="outlined"
+                    endIcon={<KeyboardArrowDownIcon />}
+                    onClick={handleMenuClick}>
+                      Archive
+                  </Button>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleMenuClose}>
+                    <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
+                    <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
+                  </Menu>
+                  <CreateButton redirectToCreateNote={redirectToCreateNote} />
               </Stack>
             </Grid>
             <Grid item justifyContent="flex-end" spacing={2}>
-                {/* Search Bar Component */}
-                <SearchBar />
-              </Grid>
+              {/* Search Bar Component */}
+              <SearchBar />
+            </Grid>
           </Grid>
           <Grid item sx={{marginTop: 4}}>
             <Typography variant="h5" gutterBottom>
@@ -119,17 +117,17 @@ export default function MyArchive() {
           </Grid>
           {/* Display recently deleted notes */}
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
-          {deletedNotes?.map((note) => (
-          <Grid item key={note.id} xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-              <Typography variant="h6">{note.title}</Typography>
-              <Typography>{note.content}</Typography>
-              <Button sx={{marginTop: 2, marginLeft: -0.5}} variant="contained" onClick={() => restoreNote(note.id)}>
-                Restore Note
-              </Button>
-              </Paper>
-            </Grid>
-          ))}
+            {deletedNotes?.map((note) => (
+              <Grid item key={note.id} xs={12} sm={6} md={4}>
+                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+                  <Typography variant="h6">{note.title}</Typography>
+                  <Typography>{note.content}</Typography>
+                  <Button sx={{marginTop: 2, marginLeft: -0.5}} variant="contained" onClick={() => restoreNote(note.id)}>
+                    Restore Note
+                  </Button>
+                </Paper>
+              </Grid>
+            ))}
           </Grid>
         </Grid>
       </Grid>
@@ -138,14 +136,13 @@ export default function MyArchive() {
 }
 
 function SearchBar() {
-    return (
-      <TextField
-        variant="standard"
-        placeholder="Search..."
-        sx={{ width: 200 }}
-      />
-    );
-  }
+  return (
+    <TextField
+      variant="standard"
+      placeholder="Search..."
+      sx={{ width: 200 }} />
+  );
+}
 
 export function NotesButton({redirectToNotes}) {
   return (

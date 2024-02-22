@@ -60,12 +60,11 @@ export default function MyFavorites({ favoriteNotes }) {
               xs={12}
               sm={7}
               md={4}
-              sx={{ width: "100%", pb: 2 }}
-            />
+              sx={{ width: "100%", pb: 2 }}/>
           </Grid>
 
           <Grid container justifyContent="space-between" spacing={2}>
-          <Grid item justifyContent="flex-start">
+            <Grid item justifyContent="flex-start">
               <Stack direction="row" justifyContent="flex-start" spacing={2}>
               <NotesButton redirectToNotes={redirectToNotes} />
               <CoursesButton redirectToCourses={redirectToCourses} /> 
@@ -87,7 +86,7 @@ export default function MyFavorites({ favoriteNotes }) {
             <Grid item justifyContent="flex-end" spacing={2}>
                 {/* Search Bar Component */}
                 <SearchBar />
-              </Grid>
+            </Grid>
           </Grid>
           <Grid item sx={{marginTop: 4}}>
             <Typography variant="h5" gutterBottom>
@@ -96,21 +95,21 @@ export default function MyFavorites({ favoriteNotes }) {
           </Grid>
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
             {favNotes?.map((note) => (
-          <Grid item key={note.id} xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-              <Typography variant="h6">{note.title}</Typography>
-              <Typography>{note.content}</Typography>
-              <IconButton
-                sx={{ position: 'absolute', top: 0, right: 0, color: 'red' }} >
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton
-                sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}>
-                <DeleteIcon />
-              </IconButton>
-            </Paper>
-          </Grid>
-              ))}
+            <Grid item key={note.id} xs={12} sm={6} md={4}>
+              <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+                <Typography variant="h6">{note.title}</Typography>
+                <Typography>{note.content}</Typography>
+                <IconButton
+                  sx={{ position: 'absolute', top: 0, right: 0, color: 'red' }} >
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton
+                  sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}>
+                  <DeleteIcon />
+                </IconButton>
+              </Paper>
+            </Grid>
+            ))}
           </Grid>
         </Grid>
       </Grid>
@@ -123,8 +122,7 @@ function SearchBar() {
       <TextField
         variant="standard"
         placeholder="Search..."
-        sx={{ width: 200 }} // Adjust the width based on your design
-      />
+        sx={{ width: 200 }} />
     );
   }
 

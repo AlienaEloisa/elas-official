@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Paper, Typography, TextField, Button, IconButton, Snackbar } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import axios from "axios";
+// import axios from "axios";
 
 const Chat = ({ onClose }) => {
   const [inputMessage, setInputMessage] = useState("");
@@ -10,8 +10,7 @@ const Chat = ({ onClose }) => {
 
   const sendMessage = async () => {
     try {
-      // Send the user's message to the chatbot API
-      const apiUrl = "YOUR_CHATBOT_API_URL";
+      const apiUrl = "CHATBOT_API_URL";
       const response = await axios.post(apiUrl, {
         message: inputMessage,
       });
@@ -22,7 +21,8 @@ const Chat = ({ onClose }) => {
 
       // Clear the input field
       setInputMessage("");
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("Error sending message:", error);
       setError("There was an error connecting to the chat service. Please try again.");
     }

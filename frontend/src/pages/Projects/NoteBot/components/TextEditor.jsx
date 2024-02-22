@@ -37,7 +37,7 @@ export default function TextEditor() {
         { id: 4, course: "Media Science" },
         { id: 5, course: "Programming" },
         { id: 6, course: "Statistics" },
-      ]);
+    ]);
 
     /*
       useEffect(() => {
@@ -89,7 +89,6 @@ export default function TextEditor() {
       setOpenDeleteConfirmationDialog(false);
     };
 
-
     const handleExistingCourse = () => {
         setOpenDialog(true);
     };
@@ -109,9 +108,11 @@ export default function TextEditor() {
             const newCourse = { id: courses.length + 1, course: newCourseTitle };
             setCourses([...courses, newCourse]); // Update the list of courses with the newly created course
             setNewCourseTitle(''); // Clear the course title field
-        } catch (error) {
+        } 
+        catch (error) {
             console.error('Error creating course:', error);
-        } finally {
+        } 
+        finally {
             setOpenNewCourseDialog(false);
         }
     };  
@@ -174,8 +175,7 @@ export default function TextEditor() {
                             xs={12}
                             sm={7}
                             md={4}
-                            sx={{ width: "100%", pb: 2 }}
-                        />
+                            sx={{ width: "100%", pb: 2 }} />
                     </Grid>
                     <Grid container justifyContent="space-between" spacing={2}>
                         <Grid item justifyContent="flex-start">
@@ -208,12 +208,12 @@ export default function TextEditor() {
                                 Create Note
                             </Typography>
                             <Grid item>
-                            <Button variant="contained" sx={{marginRight: 2}} onClick={handleSaveNote}>
-                                Save Note
-                            </Button>
-                            <IconButton onClick={handleDeleteConfirmation}>
-                              <DeleteIcon />
-                            </IconButton>
+                                <Button variant="contained" sx={{marginRight: 2}} onClick={handleSaveNote}>
+                                    Save Note
+                                </Button>
+                                <IconButton onClick={handleDeleteConfirmation}>
+                                    <DeleteIcon />
+                                </IconButton>
                             </Grid>
                             {/*Dialog for Delete confirmation*/}
                             <Dialog open={openDeleteConfirmationDialog} onClose={handleCloseDeleteConfirmation}>
@@ -222,9 +222,11 @@ export default function TextEditor() {
                                 <Typography variant="body1">Are you sure you want to delete this note?</Typography>
                               </DialogContent>
                               <DialogActions>
-                                <Button onClick={handleCloseDeleteConfirmation}>Cancel</Button>
+                                <Button onClick={handleCloseDeleteConfirmation}>
+                                    Cancel
+                                </Button>
                                 <Button onClick={handleConfirmDeleteNote} variant="contained" autoFocus>
-                                  Confirm
+                                    Confirm
                                 </Button>
                               </DialogActions>
                             </Dialog>
@@ -247,7 +249,7 @@ export default function TextEditor() {
                                         <CircularProgress />
                                     ) : (
                                         <FormControl fullWidth>
-                                             <Select
+                                            <Select
                                                 value={selectedCourseTitle}
                                                 onChange={handleSelectedCourseTitleChange}>
                                                 <MenuItem value="Select Course" disabled>
@@ -263,7 +265,9 @@ export default function TextEditor() {
                                     )}
                                 </DialogContent>
                                 <DialogActions>
-                                    <Button onClick={handleCloseDialog}>Cancel</Button>
+                                    <Button onClick={handleCloseDialog}>
+                                        Cancel
+                                    </Button>
                                     <Button onClick={handleSaveCourse} variant="contained" autoFocus>
                                         Save To Course
                                     </Button>

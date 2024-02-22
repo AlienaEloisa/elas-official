@@ -3,7 +3,6 @@ import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField, Dial
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
-// import axios from "axios";
 
 export default function MyCourses() {
   const navigate = useNavigate();
@@ -28,15 +27,12 @@ export default function MyCourses() {
   };
 
   const handleSaveCourse = () => {
-    // Create a new course object with a unique id and the entered course title
     const newCourse = {
       id: sampleCourses.length + 1, // Generate a unique id based on the current length of sampleCourses
       course: courseTitle
     };
 
     setSampleCourses(prevCourses => [...prevCourses, newCourse]);
-
-  // Close the dialog and reset the courseTitle state
     handleCloseDialog();
     setCourseTitle('');
   };
@@ -84,54 +80,52 @@ export default function MyCourses() {
               xs={12}
               sm={7}
               md={4}
-              sx={{ width: "100%", pb: 2 }}
-            />
+              sx={{ width: "100%", pb: 2 }}/>
           </Grid>
-
           <Grid container justifyContent="space-between" spacing={2}>
-          <Grid item justifyContent="flex-start">
+            <Grid item justifyContent="flex-start">
               <Stack direction="row" justifyContent="flex-start" spacing={2}>
-              <NotesButton redirectToNotes={redirectToNotes} />
-              <CoursesButton redirectToCourses={redirectToCourses} /> 
-               <Button variant="contained"
-               endIcon={<KeyboardArrowDownIcon />}
-               onClick={handleMenuClick}>
-                Archive
-                </Button>
-                <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}>
-                <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
-                <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
-              </Menu>
-              <CreateButton variant="contained" redirectToCreateNote={redirectToCreateNote} />
+                <NotesButton redirectToNotes={redirectToNotes} />
+                <CoursesButton redirectToCourses={redirectToCourses} /> 
+                  <Button variant="contained"
+                  endIcon={<KeyboardArrowDownIcon />}
+                  onClick={handleMenuClick}>
+                    Archive
+                  </Button>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleMenuClose}>
+                    <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
+                    <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
+                  </Menu>
+                <CreateButton variant="contained" redirectToCreateNote={redirectToCreateNote} />
               </Stack>
             </Grid>
-          <Grid item justifyContent="flex-end" spacing={2}>
-                {/* Search Bar Component */}
-                <SearchBar />
+            <Grid item justifyContent="flex-end" spacing={2}>
+              {/* Search Bar Component */}
+              <SearchBar />
             </Grid>
-            </Grid>
-            <Grid item sx={{marginTop: 4}}>
-            <Stack direction="row" justifyContent="space-between">
-              <Typography variant="h5" gutterBottom>
-                My Courses
-              </Typography>
-              <Button variant="contained" onClick={handleCreateCourse}>
-                Create New Course
-              </Button>
-            </Stack>
           </Grid>
+            <Grid item sx={{marginTop: 4}}>
+              <Stack direction="row" justifyContent="space-between">
+                <Typography variant="h5" gutterBottom>
+                  My Courses
+                </Typography>
+                < Button variant="contained" onClick={handleCreateCourse}>
+                  Create New Course
+                </Button>
+              </Stack>
+            </Grid>
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
-              {sampleCourses
-              .map((course) => (
-              <Grid item key={course.id} xs={12} sm={6} md={4}>
-                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-                  <Typography variant="h6">{course.course}</Typography>
-                </Paper>
-              </Grid>
-              ))}
+            {sampleCourses
+            .map((course) => (
+            <Grid item key={course.id} xs={12} sm={6} md={4}>
+              <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+                <Typography variant="h6">{course.course}</Typography>
+              </Paper>
+            </Grid>
+            ))}
           </Grid>
         </Grid>
       </Grid>
@@ -143,8 +137,7 @@ export default function MyCourses() {
             label="Course Title"
             value={courseTitle}
             onChange={(e) => setCourseTitle(e.target.value)}
-            fullWidth
-          />
+            fullWidth />
         </DialogContent>
         <DialogActions sx={{justifyContent: "space-between"}} >
           <Button sx={{marginLeft:2}} onClick={handleCloseDialog}>Cancel</Button>
@@ -160,8 +153,7 @@ function SearchBar() {
     <TextField
       variant="standard"
       placeholder="Search..."
-      sx={{ width: 200 }} // Adjust the width based on your design
-    />
+      sx={{ width: 200 }} />
   );
 }
 

@@ -4,7 +4,6 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ChatIcon from '@mui/icons-material/Chat';
 import Chat from "./Chat";
 import { useNavigate } from 'react-router-dom';
-
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
 export default function CreateNote() {
@@ -77,34 +76,32 @@ export default function CreateNote() {
               xs={12}
               sm={7}
               md={4}
-              sx={{ width: "100%", pb: 2 }}
-            />
+              sx={{ width: "100%", pb: 2 }} />
           </Grid>
-
           <Grid container justifyContent="space-between" spacing={2}>
-          <Grid item justifyContent="flex-start">
+            <Grid item justifyContent="flex-start">
               <Stack direction="row" justifyContent="flex-start" spacing={2}>
-              <NotesButton redirectToNotes={redirectToNotes} />
-              <CoursesButton redirectToCourses={redirectToCourses} /> 
-               <Button variant="contained"
-               endIcon={<KeyboardArrowDownIcon />}
-               onClick={handleMenuClick}>
-                Archive
+                <NotesButton redirectToNotes={redirectToNotes} />
+                <CoursesButton redirectToCourses={redirectToCourses} /> 
+                <Button variant="contained"
+                  endIcon={<KeyboardArrowDownIcon />}
+                  onClick={handleMenuClick}>
+                    Archive
                 </Button>
                 <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}>
-                <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
-                <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
-              </Menu>
-              <CreateButton redirectToCreateNote={redirectToCreateNote} />
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}>
+                  <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
+                  <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
+                </Menu>
+                <CreateButton redirectToCreateNote={redirectToCreateNote} />
               </Stack>
             </Grid>
             <Grid item justifyContent="flex-end" spacing={2}>
                 {/* Search Bar Component */}
                 <SearchBar />
-              </Grid>
+            </Grid>
           </Grid>
           <Grid item sx={{marginTop: 4}}>
             <Typography variant="h5" gutterBottom>
@@ -171,8 +168,7 @@ function SearchBar() {
     <TextField
       variant="standard"
       placeholder="Search..."
-      sx={{ width: 200 }} // Adjust the width based on your design
-    />
+      sx={{ width: 200 }} />
   );
 }
 

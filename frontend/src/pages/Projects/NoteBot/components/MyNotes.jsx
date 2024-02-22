@@ -126,22 +126,20 @@ export default function MyNotes() {
   closeDeleteDialog();
   sessionStorage.setItem("notebot-notes", JSON.stringify(updatedNotes));
   setSnackbarDeleteOpen(true);
-};
+  };
 
-    const addToFavorites = (note) => {
-    // Check if the note is already in favorites
+  const addToFavorites = (note) => {
     const isNoteInFavorites = favoriteNotes.some((favNote) => favNote.id === note.id);
   
     if (!isNoteInFavorites) {
-      // Add the note to favorites
       setFavoriteNotes((prevNotes) => {
         let tempFav = [...prevNotes, note];
         sessionStorage.setItem("notebot-favnotes", JSON.stringify(tempFav));
         return tempFav;
       });
       setSnackbarFavoritesOpen(true);
-    } else {
-      // Remove the note from favorites if it already exists
+    } 
+    else {
       setFavoriteNotes((prevNotes) => {
         let tempFav = prevNotes.filter((n) => n.id !== note.id);
         sessionStorage.setItem("notebot-favnotes", JSON.stringify(tempFav));
@@ -200,8 +198,7 @@ export default function MyNotes() {
               xs={12}
               sm={7}
               md={4}
-              sx={{ width: "100%", pb: 2 }}
-            />
+              sx={{ width: "100%", pb: 2 }}/>
           </Grid>
 
           <Grid container justifyContent="space-between" spacing={2}>
@@ -294,8 +291,7 @@ function SearchBar() {
     <TextField
       variant="standard"
       placeholder="Search..."
-      sx={{ width: 200 }} // Adjust the width based on your design
-    />
+      sx={{ width: 200 }} />
   );
 }
 
