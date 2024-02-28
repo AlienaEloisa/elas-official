@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { Grid, Typography, Button, Stack, Menu, MenuItem, Paper, TextField } from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import ChatIcon from '@mui/icons-material/Chat';
-import Chat from "./Chat";
+import ChatIcon from '@mui/icons-material/Chat'; // Importing ChatIcon component
+import Chat from "./Chat"; // Importing Chat component from "./Chat"
 import { useNavigate } from 'react-router-dom';
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
+// CreateNote component definition
 export default function CreateNote() {
   const navigate = useNavigate();
-  const [showChat, setShowChat] = useState(false);
-  const [showColumnButtons, setShowColumnButtons] = useState(false);
-  const [showAdditionalButtons, setShowAdditionalButtons] = useState(false);
+  const [showChat, setShowChat] = useState(false); // State to manage visibility of the chat component
+  const [showColumnButtons, setShowColumnButtons] = useState(false); // State to manage visibility of column selection buttons
+  const [showAdditionalButtons, setShowAdditionalButtons] = useState(false); // State to manage visibility of additional content creation buttons
 
+  // Navigation functions
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
   };
@@ -81,13 +83,16 @@ export default function CreateNote() {
           <Grid container justifyContent="space-between" spacing={2}>
             <Grid item justifyContent="flex-start">
               <Stack direction="row" justifyContent="flex-start" spacing={2}>
+                {/* Navigation buttons */}
                 <NotesButton redirectToNotes={redirectToNotes} />
                 <CoursesButton redirectToCourses={redirectToCourses} /> 
+                {/* Archive button with menu */}
                 <Button variant="contained"
                   endIcon={<KeyboardArrowDownIcon />}
                   onClick={handleMenuClick}>
                     Archive
                 </Button>
+                {/* Menu for archive options */}
                 <Menu
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
@@ -163,6 +168,7 @@ export default function CreateNote() {
   );
 }
 
+// SearchBar component
 function SearchBar() {
   return (
     <TextField
@@ -172,6 +178,7 @@ function SearchBar() {
   );
 }
 
+// NotesButton component
 export function NotesButton({redirectToNotes}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -182,6 +189,7 @@ export function NotesButton({redirectToNotes}) {
   );
 }
 
+// CoursesButton component
 export function CoursesButton({redirectToCourses}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -192,6 +200,7 @@ export function CoursesButton({redirectToCourses}) {
   );
 }
 
+// CreateButton component
 export function CreateButton({redirectToCreateNote}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{mt: 8}} >

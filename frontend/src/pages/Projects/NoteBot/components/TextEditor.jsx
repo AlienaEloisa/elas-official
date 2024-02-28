@@ -8,29 +8,29 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ChatIcon from '@mui/icons-material/Chat';
-import Chat from "./Chat";
-import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
+import Chat from "./Chat"; // Importing the Chat component
+import noteBotLogo from "../../../../assets/images/noteBot-logo.png"; // Importing the NoteBot logo
 import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
 export default function TextEditor() {
-    const navigate = useNavigate();
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [fontFamily, setFontFamily] = useState('Arial');
-    const [fontSize, setFontSize] = useState(12);
-    const [open, setOpen] = useState(false);
-    const [openDialog, setOpenDialog] = useState(false);
-    const [openNewCourseDialog, setOpenNewCourseDialog] = useState(false);
-    const [selectedCourseTitle, setSelectedCourseTitle] = useState('Select Course');
-    const [newCourseTitle, setNewCourseTitle] = useState('');
-    const [courses, setCourses] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [openDeleteConfirmationDialog, setOpenDeleteConfirmationDialog] = useState(false);
-    const [showChat, setShowChat] = useState(false);
+    const navigate = useNavigate(); // Hook from react-router-dom for navigation
+    const [title, setTitle] = useState(''); // State variable to store note title
+    const [content, setContent] = useState(''); // State variable to store note content
+    const [anchorEl, setAnchorEl] = useState(null); // State variable for anchor element of menu
+    const [fontFamily, setFontFamily] = useState('Arial'); // State variable to store selected font family
+    const [fontSize, setFontSize] = useState(12); // State variable to store selected font size
+    const [open, setOpen] = useState(false); // State variable to control the visibility of a dialog
+    const [openDialog, setOpenDialog] = useState(false); // State variable to control the visibility of a dialog for existing courses
+    const [openNewCourseDialog, setOpenNewCourseDialog] = useState(false); // State variable to control the visibility of a dialog for creating a new course
+    const [selectedCourseTitle, setSelectedCourseTitle] = useState('Select Course'); // State variable to store the selected course title
+    const [newCourseTitle, setNewCourseTitle] = useState(''); // State variable to store the new course title
+    const [courses, setCourses] = useState([]); // State variable to store the list of courses
+    const [loading, setLoading] = useState(false); // State variable to control loading state
+    const [openDeleteConfirmationDialog, setOpenDeleteConfirmationDialog] = useState(false); // State variable to control the visibility of a delete confirmation dialog
+    const [showChat, setShowChat] = useState(false); // State variable to control the visibility of the chat component
 
-    const [sampleCourses, setSampleCourses] = useState([
+    const [sampleCourses, setSampleCourses] = useState([ // Sample list of courses (to be replaced with actual data)
         { id: 1, course: "HCI" },
         { id: 2, course: "Marketing" },
         { id: 3, course: "Math" },
@@ -39,69 +39,60 @@ export default function TextEditor() {
         { id: 6, course: "Statistics" },
     ]);
 
-    /*
-      useEffect(() => {
-        // Fetch courses from backend when component mounts
-        fetchCourses();
-    }, []);
-
-    const fetchCourses = async () => {
-        try {
-            setLoading(true);
-            // Replace 'your-backend-api-endpoint' with your actual backend API endpoint
-            const response = await axios.get('your-backend-api-endpoint');
-            setCourses(response.data);
-        } catch (error) {
-            console.error('Error fetching courses:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-    */
-
+    // Function to handle menu click
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
+    // Function to handle menu close
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
 
+    // Function to handle saving the note
     const handleSaveNote = () => {
         setOpen(true);
     };
 
+    // Function to handle closing the dialog
     const handleClose = () => {
         setOpen(false);
     };
 
+    // Function to handle opening the delete confirmation dialog
     const handleDeleteConfirmation = () => {
       setOpenDeleteConfirmationDialog(true);
     };
 
+    // Function to handle confirming the deletion of a note
     const handleConfirmDeleteNote = () => {
       // Add logic to delete the note from the backend
       console.log("Note deleted");
       setOpenDeleteConfirmationDialog(false); // Close the confirmation dialog after deletion
     };
 
+    // Function to handle closing the delete confirmation dialog
     const handleCloseDeleteConfirmation = () => {
       setOpenDeleteConfirmationDialog(false);
     };
 
+    // Function to handle adding note to an existing course
     const handleExistingCourse = () => {
         setOpenDialog(true);
     };
 
+    // Function to handle creating a new course
     const handleCreateCourse = () => {
         setOpenNewCourseDialog(true);
     };
 
+    // Function to handle closing the dialog for existing courses and new course creation
     const handleCloseDialog = () => {
         setOpenDialog(false);
         setOpenNewCourseDialog(false);
     };
 
+    // Function to handle saving a new course
     const handleSaveCourse = async () => {
         try {
             // Simulate creating a new course (replace with your actual logic)
@@ -117,31 +108,38 @@ export default function TextEditor() {
         }
     };  
     
+    // Function to handle cancelling new course creation
     const handleCancelCourse = () => {
         setNewCourseTitle('');
         setOpenNewCourseDialog(false);
     };
 
+    // Function to handle change in selected course title
     const handleSelectedCourseTitleChange = (e) => {
         setSelectedCourseTitle(e.target.value);
     };
 
+    // Function to handle change in new course title
     const handleNewCourseTitleChange = (e) => {
         setNewCourseTitle(e.target.value);
     };
 
+    // Function to handle change in note title
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
     };
 
+    // Function to handle change in note content
     const handleContentChange = (e) => {
         setContent(e.target.value);
     };
 
+    // Function to toggle chat component visibility
     const toggleChat = () => {
         setShowChat(!showChat);
-      };
+    };
 
+    // Functions to redirect to different pages within the application
     const redirectToCourses = () => {
         navigate("/projects/notebot/mycourses");
     };
@@ -166,6 +164,7 @@ export default function TextEditor() {
         <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
             <Grid container sx={{ maxWidth: 1500, width: "100%" }} spacing={2}>
                 <Grid item xs={12}>
+                    {/* NoteBot Logo */}
                     <Grid container justifyContent={"center"}>
                         <Grid
                             item
@@ -177,6 +176,7 @@ export default function TextEditor() {
                             md={4}
                             sx={{ width: "100%", pb: 2 }} />
                     </Grid>
+                    {/* Header Section */}
                     <Grid container justifyContent="space-between" spacing={2}>
                         <Grid item justifyContent="flex-start">
                             <Stack direction="row" justifyContent="flex-start" spacing={2}>
@@ -202,6 +202,7 @@ export default function TextEditor() {
                             <SearchBar />
                         </Grid>
                     </Grid>
+                    {/* Title and Action Buttons */}
                     <Grid item sx={{ marginTop: 4 }}>
                         <Stack direction="row" justifyContent="space-between">
                             <Typography variant="h5" gutterBottom>
@@ -215,7 +216,7 @@ export default function TextEditor() {
                                     <DeleteIcon />
                                 </IconButton>
                             </Grid>
-                            {/*Dialog for Delete confirmation*/}
+                            {/* Delete Confirmation Dialog */}
                             <Dialog open={openDeleteConfirmationDialog} onClose={handleCloseDeleteConfirmation}>
                               <DialogTitle>Delete Note</DialogTitle>
                               <DialogContent>
@@ -230,7 +231,7 @@ export default function TextEditor() {
                                 </Button>
                               </DialogActions>
                             </Dialog>
-                            {/*Dialog for Adding note to new or existing course*/}
+                            {/* Dialog for Adding note to new or existing course */}
                             <Dialog open={open} onClose={handleClose}>
                                 <DialogTitle>Add Note to Course</DialogTitle>
                                 <DialogContent>
@@ -241,7 +242,7 @@ export default function TextEditor() {
                                     <Button onClick={handleClose}>Cancel</Button>
                                 </DialogActions>
                             </Dialog>
-                            {/*Dialog for chosing course from library*/}
+                            {/* Dialog for choosing course from library */}
                             <Dialog open={openDialog} onClose={handleCloseDialog}>
                                 <DialogTitle>Add to Course</DialogTitle>
                                 <DialogContent>
@@ -273,7 +274,7 @@ export default function TextEditor() {
                                     </Button>
                                 </DialogActions>
                             </Dialog>
-                            {/*Dialog for creating a new course*/}
+                            {/* Dialog for creating a new course */}
                             <Dialog open={openNewCourseDialog} onClose={handleCloseDialog}>
                                 <DialogTitle>Create New Course</DialogTitle>
                                 <DialogContent>
@@ -292,7 +293,7 @@ export default function TextEditor() {
                             </Dialog>
                         </Stack>
                     </Grid>
-                    {/*Toolbar for text editing and text*/}
+                    {/* Toolbar for text editing and text */}
                     <Grid item sx={{ marginTop: 4 }}>
                         <Toolbar sx={{ marginLeft: -4.5 }}>
                             <IconButton>
@@ -324,6 +325,7 @@ export default function TextEditor() {
                             </FormControl>
                         </Toolbar>
                     </Grid>
+                    {/* Text Fields for Note Title and Content */}
                     <Grid item sx={{ marginTop: 4 }}>
                         <Grid item sx={{ width: "100%" }}>
                             <TextField
@@ -361,6 +363,7 @@ export default function TextEditor() {
     );
 }
 
+// SearchBar component
 function SearchBar() {
     return (
         <TextField
@@ -370,6 +373,7 @@ function SearchBar() {
     );
 }
 
+// NotesButton component
 export function NotesButton({ redirectToNotes }) {
     return (
         <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -380,6 +384,7 @@ export function NotesButton({ redirectToNotes }) {
     );
 }
 
+// CoursesButton component
 export function CoursesButton({ redirectToCourses }) {
     return (
         <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -390,6 +395,7 @@ export function CoursesButton({ redirectToCourses }) {
     );
 }
 
+// CreateButton component
 export function CreateButton({ redirectToCreateNote }) {
     return (
         <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }} >

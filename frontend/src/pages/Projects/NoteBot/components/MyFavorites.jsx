@@ -7,46 +7,59 @@ import { useNavigate } from 'react-router-dom';
 
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
+// MyFavorites component definition
 export default function MyFavorites({ favoriteNotes }) {
+  // React Router hook for navigation
   const navigate = useNavigate();
   
+  // Function to redirect to courses page
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
   };
   
+  // Function to redirect to create note page
   const redirectToCreateNote = () => {
     navigate("/projects/notebot/createnote")
   }
 
+  // Function to redirect to notes page
   const redirectToNotes = () => {
     navigate("/projects/notebot/mynotes")
   };
 
+  // Function to redirect to favorites page
   const redirectToMyFavorites = () => {
     navigate("/projects/notebot/myfavorites");
   };
 
+  // Function to redirect to deleted notes page
   const redirectToDeleted = () => {
     navigate("/projects/notebot/deleted");
   };
 
+  // State hook for anchor element in menu
   const [anchorEl, setAnchorEl] = useState(null);
 
+  // Function to handle menu click
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  // Function to handle menu close
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
 
+  // State hook for favorite notes
   const [favNotes, setfavNotes] = useState([]);
 
+  // Fetch favorite notes from session storage on component mount
   useEffect(() => {
     let tempFav = JSON.parse(sessionStorage.getItem("notebot-favnotes"));
     setfavNotes(tempFav);
   }, []);
 
+  // JSX rendering
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
       <Grid container sx={{ maxWidth: 1500, width: "100%" }} spacing={2}>
@@ -66,21 +79,25 @@ export default function MyFavorites({ favoriteNotes }) {
           <Grid container justifyContent="space-between" spacing={2}>
             <Grid item justifyContent="flex-start">
               <Stack direction="row" justifyContent="flex-start" spacing={2}>
-              <NotesButton redirectToNotes={redirectToNotes} />
-              <CoursesButton redirectToCourses={redirectToCourses} /> 
-               <Button variant="outlined"
-               endIcon={<KeyboardArrowDownIcon />}
-               onClick={handleMenuClick}>
-                Archive
+                {/* Navigation buttons */}
+                <NotesButton redirectToNotes={redirectToNotes} />
+                <CoursesButton redirectToCourses={redirectToCourses} /> 
+                {/* Archive button with menu */}
+                <Button variant="outlined"
+                  endIcon={<KeyboardArrowDownIcon />}
+                  onClick={handleMenuClick}>
+                  Archive
                 </Button>
+                {/* Menu for archive options */}
                 <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}>
-                <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
-                <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
-              </Menu>
-              <CreateButton redirectToCreateNote={redirectToCreateNote} />
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}>
+                  <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
+                  <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
+                </Menu>
+                {/* Button to create a new note */}
+                <CreateButton redirectToCreateNote={redirectToCreateNote} />
               </Stack>
             </Grid>
             <Grid item justifyContent="flex-end" spacing={2}>
@@ -93,16 +110,19 @@ export default function MyFavorites({ favoriteNotes }) {
               My Favorite Notes
             </Typography>
           </Grid>
+          {/* Display favorite notes */}
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
             {favNotes?.map((note) => (
             <Grid item key={note.id} xs={12} sm={6} md={4}>
               <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
                 <Typography variant="h6">{note.title}</Typography>
                 <Typography>{note.content}</Typography>
+                {/* Button to remove from favorites */}
                 <IconButton
                   sx={{ position: 'absolute', top: 0, right: 0, color: 'red' }} >
                   <FavoriteIcon />
                 </IconButton>
+                {/* Button to delete note */}
                 <IconButton
                   sx={{ position: 'absolute', bottom: 0, right: 0, color: 'gray' }}>
                   <DeleteIcon />
@@ -117,15 +137,17 @@ export default function MyFavorites({ favoriteNotes }) {
   );
 }
 
+// SearchBar component
 function SearchBar() {
-    return (
-      <TextField
-        variant="standard"
-        placeholder="Search..."
-        sx={{ width: 200 }} />
-    );
-  }
+  return (
+    <TextField
+      variant="standard"
+      placeholder="Search..."
+      sx={{ width: 200 }} />
+  );
+}
 
+// NotesButton component
 export function NotesButton({redirectToNotes}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -136,6 +158,7 @@ export function NotesButton({redirectToNotes}) {
   );
 }
 
+// CoursesButton component
 export function CoursesButton({redirectToCourses}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -146,6 +169,7 @@ export function CoursesButton({redirectToCourses}) {
   );
 }
 
+// CreateButton component
 export function CreateButton({redirectToCreateNote}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{mt: 8}} >

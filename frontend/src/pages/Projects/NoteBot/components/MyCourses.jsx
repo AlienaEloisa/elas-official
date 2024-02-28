@@ -4,11 +4,16 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useNavigate } from 'react-router-dom';
 import noteBotLogo from "../../../../assets/images/noteBot-logo.png";
 
+// MyCourses component definition
 export default function MyCourses() {
+  // React Router hook for navigation
   const navigate = useNavigate();
+
+  // State hooks for managing dialog open state and course title input
   const [openDialog, setOpenDialog] = useState(false);
   const [courseTitle, setCourseTitle] = useState('');
 
+  // State hook for managing sample courses data
   const [sampleCourses, setSampleCourses] = useState([
     { id: 1, course: "HCI" },
     { id: 2, course: "Math" },
@@ -18,25 +23,32 @@ export default function MyCourses() {
     { id: 6, course: "Digital Media" },
   ]);
 
+  // Function to handle opening the dialog for creating a new course
   const handleCreateCourse = () => {
     setOpenDialog(true);
   };
 
+  // Function to handle closing the dialog
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
 
+  // Function to handle saving a new course
   const handleSaveCourse = () => {
     const newCourse = {
       id: sampleCourses.length + 1, // Generate a unique id based on the current length of sampleCourses
       course: courseTitle
     };
 
+    // Update sampleCourses state with the new course
     setSampleCourses(prevCourses => [...prevCourses, newCourse]);
+    
+    // Close the dialog and reset the courseTitle state
     handleCloseDialog();
     setCourseTitle('');
   };
   
+  // Navigation functions
   const redirectToCourses = () => {
     navigate("/projects/notebot/mycourses")
   };
@@ -57,16 +69,20 @@ export default function MyCourses() {
     navigate("/projects/notebot/deleted");
   };
 
+  // State hook for anchor element in menu
   const [anchorEl, setAnchorEl] = useState(null);
 
+  // Function to handle menu click
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  // Function to handle menu close
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
 
+  // JSX rendering
   return (
     <Grid container justifyContent="center" sx={{ py: 4, px: 2 }}>
       <Grid container sx={{ maxWidth: 1500, width: "100%" }} spacing={2}>
@@ -85,20 +101,24 @@ export default function MyCourses() {
           <Grid container justifyContent="space-between" spacing={2}>
             <Grid item justifyContent="flex-start">
               <Stack direction="row" justifyContent="flex-start" spacing={2}>
+                {/* Navigation buttons */}
                 <NotesButton redirectToNotes={redirectToNotes} />
                 <CoursesButton redirectToCourses={redirectToCourses} /> 
-                  <Button variant="contained"
+                {/* Archive button with menu */}
+                <Button variant="contained"
                   endIcon={<KeyboardArrowDownIcon />}
                   onClick={handleMenuClick}>
-                    Archive
-                  </Button>
-                  <Menu
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={handleMenuClose}>
-                    <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
-                    <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
-                  </Menu>
+                  Archive
+                </Button>
+                {/* Menu for archive options */}
+                <Menu
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}>
+                  <MenuItem onClick={redirectToMyFavorites}>Favorite Notes</MenuItem>
+                  <MenuItem onClick={redirectToDeleted}>Recently Deleted</MenuItem>
+                </Menu>
+                {/* Button to create a new note */}
                 <CreateButton variant="contained" redirectToCreateNote={redirectToCreateNote} />
               </Stack>
             </Grid>
@@ -107,24 +127,25 @@ export default function MyCourses() {
               <SearchBar />
             </Grid>
           </Grid>
-            <Grid item sx={{marginTop: 4}}>
-              <Stack direction="row" justifyContent="space-between">
-                <Typography variant="h5" gutterBottom>
-                  My Courses
-                </Typography>
-                < Button variant="contained" onClick={handleCreateCourse}>
-                  Create New Course
-                </Button>
-              </Stack>
-            </Grid>
+          {/* Heading and button to create new course */}
+          <Grid item sx={{marginTop: 4}}>
+            <Stack direction="row" justifyContent="space-between">
+              <Typography variant="h5" gutterBottom>
+                My Courses
+              </Typography>
+              <Button variant="contained" onClick={handleCreateCourse}>
+                Create New Course
+              </Button>
+            </Stack>
+          </Grid>
+          {/* Display sample courses */}
           <Grid container spacing={2} sx={{ marginTop: 4 }}>
-            {sampleCourses
-            .map((course) => (
-            <Grid item key={course.id} xs={12} sm={6} md={4}>
-              <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
-                <Typography variant="h6">{course.course}</Typography>
-              </Paper>
-            </Grid>
+            {sampleCourses.map((course) => (
+              <Grid item key={course.id} xs={12} sm={6} md={4}>
+                <Paper elevation={3} sx={{ p: 2, height: "100%", backgroundColor: "#f5f5f5", position: 'relative' }}>
+                  <Typography variant="h6">{course.course}</Typography>
+                </Paper>
+              </Grid>
             ))}
           </Grid>
         </Grid>
@@ -148,6 +169,7 @@ export default function MyCourses() {
   );
 }
 
+// SearchBar component
 function SearchBar() {
   return (
     <TextField
@@ -157,6 +179,7 @@ function SearchBar() {
   );
 }
 
+// NotesButton component
 export function NotesButton({redirectToNotes}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -167,6 +190,7 @@ export function NotesButton({redirectToNotes}) {
   );
 }
 
+// CoursesButton component
 export function CoursesButton({redirectToCourses}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 8 }}>
@@ -177,6 +201,7 @@ export function CoursesButton({redirectToCourses}) {
   );
 }
 
+// CreateButton component
 export function CreateButton({redirectToCreateNote}) {
   return (
     <Stack direction="row" justifyContent="center" spacing={2} sx={{mt: 8}} >
