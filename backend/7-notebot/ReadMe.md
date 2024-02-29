@@ -19,6 +19,8 @@ o Screenshots of the project and visualizations
 
 #### Aliena Marsch, Rody Moustfa and Sasha Marie Hemmer-Dudszus
 
+## Let's iscover some links:
+
 #### Here you can find the link to our screencast of the live demo of our version of Notebot:
 https://youtu.be/v4ngM65CRZk?si=ng45IoDf65rYMsdn 
 
