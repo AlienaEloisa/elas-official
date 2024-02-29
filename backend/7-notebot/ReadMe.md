@@ -15,15 +15,20 @@ o Illustration of the NoteBot application web architecture, additional libraries
 o Screenshots of the project and visualizations
 
 
+
 ## May we present? The Innovators:
 
 #### Aliena Marsch, Rody Moustfa and Sasha Marie Hemmer-Dudszus
 
-## Let's iscover some links:
+
+## Let's discover some links:
 
 #### Here you can find the link to our screencast of the live demo of our version of Notebot:
+
 https://youtu.be/v4ngM65CRZk?si=ng45IoDf65rYMsdn 
 
+
 #### And when you click on that link, then it will guide you to our advertisement video:
+
 https://youtu.be/rfGXkgiGcoU?si=9cGhQyMDcOr86DLv
 
