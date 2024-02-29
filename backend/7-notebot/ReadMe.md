@@ -1,41 +1,27 @@
-## 🚀 Get Started with Notebot Service
+## Notebot application
 
-#### Pre-requisites
+#### This is a student for students project of the Praxisprojekt IDEA from the University of Duisburg-Essen to develop an app which is already existing.
 
-Download the following software and install them on your machine:
+We - The Innovators - wanted to make the app work for students in their daily life. 
+The goal to achieve this was to keep the structure of the web application simple and clean. 
+Therefore we did a Cognitive Walkthrough early in our process to detect the issues and good parts of the existing system.
+From that point we developed ideas how we could improve the Notebot-application and tried to figure out how these ideas could be implemented in real coding.
+So we had to learn a lot and we encountered some obstacles, but in the end we did our best and are now happy to share our results with you!
 
-- Node.js (v18.12.1) from [the official website](https://nodejs.org/en/blog/release/v18.12.1)
 
-- [IntelliJ Ultimate](https://www.jetbrains.com/de-de/idea/download/#section=windows) or [Visual Studio Code](https://code.visualstudio.com/download) and install one of the code editors.
+o Illustration of the NoteBot application web architecture, additional libraries used, etc.
 
-- MongoDB Community Server (v5.0.5) from [the official website](https://www.mongodb.com/try/download/community) and [MongoDB Compass](https://www.mongodb.com/try/download/compass) and install them
 
-- Git from [the official website](https://git-scm.com/downloads)
+o Screenshots of the project and visualizations
 
-- Github Desktop from [the official website](https://desktop.github.com/)
 
-- Postman from [the official website](https://www.postman.com/downloads/)
+#### May we present? The Innovators:
+Aliena Marsch, Rody Moustfa and Sasha Marie Hemmer-Dudszus
 
-#### Installation Guide for Notebot Service (Node/Express)
 
-- Using your file explorer, go inside the directory `backend/7-notebot`, copy the `example.env` file and paste it in the same folder. Rename the copied environment file to `.env`
+#### Here you can find the link to our screencast of the live demo of our version of Notebot:
+https://youtu.be/v4ngM65CRZk?si=ng45IoDf65rYMsdn 
 
-- Open a command prompt/terminal in the `7-notebot` directory
+#### And when you click on that link, then it will guide you to our advertisement video:
+https://youtu.be/rfGXkgiGcoU?si=9cGhQyMDcOr86DLv
 
-- Type the command in the command prompt/terminal to install node packages
-
-  ```bash
-  npm ci
-  ```
-
-  If you face issue with `npm ci` command, try `npm install` or `npm install --force` command. Caution: `npm install` and `npm install --force` will delete all the existing node packages, install the new ones and update the `package-lock.json` file. Please make sure you do not push your changes to the `package-lock.json` file.
-
-- After the packages are installed, type the following command to run the server
-
-  ```bash
-  npm run watch:dev
-  ```
-
-  The server will run at [http://localhost:8007](http://localhost:8007)
-
-- Stop the server by pressing `Cntl + c` inside the command prompt
