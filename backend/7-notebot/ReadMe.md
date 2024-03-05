@@ -11,6 +11,7 @@ So we had to learn a lot and we encountered some obstacles, but in the end we di
 
 ## Our used libraries and toolkits are:
 
+
 #### Visual Studio Code
 for coding and sharing in GitHub
 
@@ -30,19 +31,34 @@ to help us to understand the already existing codes
 for communication, organization and meetings
 
 
-## Illustartion of the architecture of our version of the NoteBot application:
+## Illustration of the architecture of our version of the NoteBot application:
 
 
-o Illustration of the NoteBot application web architecture and Screenshots of the project and visualizations
+#### At the start you can either Sign Up or Login to the application.
+#### Then you can find at the navigation bar by clicking at the bottoms the following pages: 
+
+#### First you are at the page "My Notes".
+#### You can either add a note by clicking the heart-symbol to "Favorite Notes" or by clicking the trashcan-symbol to "Recently Deleted".
+
+#### There is also a page where you can find your notes sorted to your created Courses.
+
+#### The "Archive" includes on the one hand your favorite notes.
+#### And on the other hand your recently deleted notes.
+
+#### At last the page "Create Note" gives you the opportunity to write a note by yourself and at the end it will be added to "My Notes".
+
+o Screenshots of the project and visualizations
 
 
 
 ## And if you wondered who The Innovators are: May we present?
 
+
 #### Aliena Marsch, Rody Moustfa and Sasha Marie Hemmer-Dudszus
 
 
 ## Let's discover some exciting links together:
+
 
 #### Here you can find the link to our screencast of the live demo of our version of Notebot:
 
