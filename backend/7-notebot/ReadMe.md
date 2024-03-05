@@ -55,14 +55,14 @@ for communication, organization and meetings
 
 #### The "Archive" includes on the one hand your favorite notes.
 
-
-![IMG-20240305-WA0078](https://github.com/AlienaEloisa/elas-official/assets/148063774/685ea12b-2925-4b21-89c2-58e24a09a640)
+![IMG-20240305-WA0079](https://github.com/AlienaEloisa/elas-official/assets/148063774/7d3481b8-69a7-4159-b4b0-82d599e8683c)
 
 
 #### And on the other hand your recently deleted notes.
 
 ![IMG-20240305-WA0077](https://github.com/AlienaEloisa/elas-official/assets/148063774/1de9b3b3-864b-4916-b37e-95be309fbcdb)
 
+![IMG-20240305-WA0078](https://github.com/AlienaEloisa/elas-official/assets/148063774/685ea12b-2925-4b21-89c2-58e24a09a640)
 
 #### At last the page "Create Note" gives you the opportunity to write a note by yourself and at the end it will be added to "My Notes".
 
