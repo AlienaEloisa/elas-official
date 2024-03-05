@@ -36,10 +36,10 @@ for communication, organization and meetings
 
 #### At the start you can either Sign Up or Login to the application.
 
-![IMG-20240305-WA0080](https://github.com/AlienaEloisa/elas-official/assets/148063774/1a23a051-8728-4e18-958c-170680bdc871)
-
-
 ![IMG-20240305-WA0082](https://github.com/AlienaEloisa/elas-official/assets/148063774/d4fec7e4-3f8a-45d8-81da-6c454e53d950)
+
+
+![IMG-20240305-WA0080](https://github.com/AlienaEloisa/elas-official/assets/148063774/1a23a051-8728-4e18-958c-170680bdc871)
 
 
 #### Then you can find at the navigation bar by clicking at the bottoms the following pages: 
