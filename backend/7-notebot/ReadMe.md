@@ -83,7 +83,7 @@ for communication, organization and meetings
 ![IMG-20240305-WA0078](https://github.com/AlienaEloisa/elas-official/assets/148063774/685ea12b-2925-4b21-89c2-58e24a09a640)
 
 
-#### At last the page "Create Note" gives you the opportunity to write a note by yourself and at the end it will be added to "My Notes".
+#### The last the page "Create Note" gives you the opportunity to write a note by yourself and at the end it will be added to "My Notes".
 
 ![IMG-20240305-WA0072](https://github.com/AlienaEloisa/elas-official/assets/148063774/68d7a2c4-15c6-40d3-a389-98ac53cf8fe0)
 
@@ -94,7 +94,7 @@ for communication, organization and meetings
 ![IMG-20240305-WA0074](https://github.com/AlienaEloisa/elas-official/assets/148063774/b30d8201-68d7-44f9-ab6a-8b87297bc2c5)
 
 
-#### But you can of course discover some more functions while using NoteBot!
+#### But you can of course discover some more functions on your own while using NoteBot!
 
 
 
