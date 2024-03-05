@@ -35,10 +35,23 @@ for communication, organization and meetings
 
 
 #### At the start you can either Sign Up or Login to the application.
+
+![IMG-20240305-WA0080](https://github.com/AlienaEloisa/elas-official/assets/148063774/1a23a051-8728-4e18-958c-170680bdc871)
+
+
+![IMG-20240305-WA0082](https://github.com/AlienaEloisa/elas-official/assets/148063774/d4fec7e4-3f8a-45d8-81da-6c454e53d950)
+
+
 #### Then you can find at the navigation bar by clicking at the bottoms the following pages: 
 
 #### First you are at the page "My Notes".
+
+![IMG-20240305-WA0081](https://github.com/AlienaEloisa/elas-official/assets/148063774/a650137c-e3b9-409b-92cf-6391470d5501)
+
+
 #### You can either add a note by clicking the heart-symbol to "Favorite Notes".
+
+![IMG-20240305-WA0083](https://github.com/AlienaEloisa/elas-official/assets/148063774/1d73639b-f6ef-4aed-94c5-6b9cbfc1920b)
 
 
 #### Or delete a note by clicking the trashcan-symbol and move it to "Recently Deleted".
@@ -48,6 +61,7 @@ for communication, organization and meetings
 
 #### There is also a page where you can find your notes sorted to your created Courses.
 
+![IMG-20240305-WA0085](https://github.com/AlienaEloisa/elas-official/assets/148063774/05fe0288-abc4-4544-a92e-d609255a3383)
 
 
 ![IMG-20240305-WA0075](https://github.com/AlienaEloisa/elas-official/assets/148063774/1553d4bd-868f-4974-bca5-2d03da06880e)
@@ -58,24 +72,29 @@ for communication, organization and meetings
 ![IMG-20240305-WA0079](https://github.com/AlienaEloisa/elas-official/assets/148063774/7d3481b8-69a7-4159-b4b0-82d599e8683c)
 
 
+![IMG-20240305-WA0084](https://github.com/AlienaEloisa/elas-official/assets/148063774/60d3a9f0-2795-40ab-8e83-f076872e99a3)
+
+
 #### And on the other hand your recently deleted notes.
 
 ![IMG-20240305-WA0077](https://github.com/AlienaEloisa/elas-official/assets/148063774/1de9b3b3-864b-4916-b37e-95be309fbcdb)
 
+
 ![IMG-20240305-WA0078](https://github.com/AlienaEloisa/elas-official/assets/148063774/685ea12b-2925-4b21-89c2-58e24a09a640)
+
 
 #### At last the page "Create Note" gives you the opportunity to write a note by yourself and at the end it will be added to "My Notes".
 
 ![IMG-20240305-WA0072](https://github.com/AlienaEloisa/elas-official/assets/148063774/68d7a2c4-15c6-40d3-a389-98ac53cf8fe0)
 
+
 ![IMG-20240305-WA0073](https://github.com/AlienaEloisa/elas-official/assets/148063774/c1d03f35-30cf-423f-b2d5-fd04b9a0ce7d)
+
 
 ![IMG-20240305-WA0074](https://github.com/AlienaEloisa/elas-official/assets/148063774/b30d8201-68d7-44f9-ab6a-8b87297bc2c5)
 
 
 #### But you can of course discover some more functions while using NoteBot!
-
-o Screenshots of the project and visualizations
 
 
 
