@@ -46,6 +46,10 @@ for communication, organization and meetings
 #### And on the other hand your recently deleted notes.
 
 #### At last the page "Create Note" gives you the opportunity to write a note by yourself and at the end it will be added to "My Notes".
+![IMG-20240305-WA0072](https://github.com/AlienaEloisa/elas-official/assets/148063774/68d7a2c4-15c6-40d3-a389-98ac53cf8fe0)
+
+
+#### But you can of course discover some more functions while using NoteBot!
 
 o Screenshots of the project and visualizations
 
