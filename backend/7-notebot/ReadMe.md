@@ -38,15 +38,39 @@ for communication, organization and meetings
 #### Then you can find at the navigation bar by clicking at the bottoms the following pages: 
 
 #### First you are at the page "My Notes".
-#### You can either add a note by clicking the heart-symbol to "Favorite Notes" or by clicking the trashcan-symbol to "Recently Deleted".
+#### You can either add a note by clicking the heart-symbol to "Favorite Notes".
+
+
+#### Or delete a note by clicking the trashcan-symbol and move it to "Recently Deleted".
+
+![IMG-20240305-WA0076](https://github.com/AlienaEloisa/elas-official/assets/148063774/f811410a-9b31-4995-ac97-a227876e6384)
+
 
 #### There is also a page where you can find your notes sorted to your created Courses.
 
+
+
+![IMG-20240305-WA0075](https://github.com/AlienaEloisa/elas-official/assets/148063774/1553d4bd-868f-4974-bca5-2d03da06880e)
+
+
 #### The "Archive" includes on the one hand your favorite notes.
+
+
+![IMG-20240305-WA0078](https://github.com/AlienaEloisa/elas-official/assets/148063774/685ea12b-2925-4b21-89c2-58e24a09a640)
+
+
 #### And on the other hand your recently deleted notes.
 
+![IMG-20240305-WA0077](https://github.com/AlienaEloisa/elas-official/assets/148063774/1de9b3b3-864b-4916-b37e-95be309fbcdb)
+
+
 #### At last the page "Create Note" gives you the opportunity to write a note by yourself and at the end it will be added to "My Notes".
+
 ![IMG-20240305-WA0072](https://github.com/AlienaEloisa/elas-official/assets/148063774/68d7a2c4-15c6-40d3-a389-98ac53cf8fe0)
+
+![IMG-20240305-WA0073](https://github.com/AlienaEloisa/elas-official/assets/148063774/c1d03f35-30cf-423f-b2d5-fd04b9a0ce7d)
+
+![IMG-20240305-WA0074](https://github.com/AlienaEloisa/elas-official/assets/148063774/b30d8201-68d7-44f9-ab6a-8b87297bc2c5)
 
 
 #### But you can of course discover some more functions while using NoteBot!
